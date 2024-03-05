@@ -1,0 +1,25 @@
+{
+  "$GMSound":"",
+  "%Name":"snd_player_death",
+  "audioGroupId":{
+    "name":"SoundEffects",
+    "path":"audiogroups/SoundEffects",
+  },
+  "bitDepth":1,
+  "bitRate":128,
+  "compression":0,
+  "conversionMode":0,
+  "duration":2.666667,
+  "name":"snd_player_death",
+  "parent":{
+    "name":"Entities",
+    "path":"folders/Sounds/Entities.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":44100,
+  "soundFile":"snd_player_death.wav",
+  "type":0,
+  "volume":1.0,
+}

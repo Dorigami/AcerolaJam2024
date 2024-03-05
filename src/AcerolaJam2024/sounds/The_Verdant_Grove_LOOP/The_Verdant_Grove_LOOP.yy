@@ -1,0 +1,25 @@
+{
+  "$GMSound":"",
+  "%Name":"The_Verdant_Grove_LOOP",
+  "audioGroupId":{
+    "name":"GameMusic",
+    "path":"audiogroups/GameMusic",
+  },
+  "bitDepth":1,
+  "bitRate":128,
+  "compression":2,
+  "conversionMode":0,
+  "duration":119.230774,
+  "name":"The_Verdant_Grove_LOOP",
+  "parent":{
+    "name":"Music",
+    "path":"folders/Sounds/Music.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":44100,
+  "soundFile":"The_Verdant_Grove_LOOP.wav",
+  "type":0,
+  "volume":0.18,
+}
