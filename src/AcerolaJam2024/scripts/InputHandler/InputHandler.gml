@@ -31,10 +31,15 @@ function handle_default_mouse(){
 	if(mouse_check_button_released(mb_left)){} 
     else if mouse_check_button_pressed(mb_left){}
 
-	// right mouse
+	// right mouse (allow player to move)
 	if(mouse_check_button_released(mb_right)){
-		var _dir = point_direction(global.i_player.x, global.i_player.y,mouse_x,mouse_y) div 6;
-		return { player_move_command : new Command("player_move_command", _dir == 6 ? 0 : _dir, 0, 0) }
+		if(!array_equals(global.i_hex_grid.mouse_hex_coord, global.i_player.hex))
+		{
+			var _dir = 30 + point_direction(global.i_player.x, global.i_player.y,mouse_x,mouse_y);
+			if(_dir >= 360) _dir -= 360;
+			_dir = _dir div 60;
+			return { player_move_command : new Command("player_move_command", _dir == 6 ? 0 : _dir, 0, 0) }
+		}
 	} else if(mouse_check_button_pressed(mb_right)){}
 
 	// middle mouse / wheel

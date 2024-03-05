@@ -52,7 +52,8 @@ function InitHexagonalGrid(_tile_type, _offset_type, _size, _ox, _oy, _max_width
 		
 		hexmap_loaded_filename = "";
 		hexmap = ds_map_create(); // stores index values to be used
-
+		// create unit vectors for each direction
+		hex_unit_vectors = [vect2(1,0),vect2(1,-1),vect2(0,-1),vect2(-1,0),vect2(-1,1),vect2(0,1)];
 		// calc the width and height of the grid
 		hexgrid_width_pixels = hexgrid_width_max*h_spacing;
 		hexgrid_height_pixels = hexgrid_height_max*v_spacing;
@@ -142,7 +143,6 @@ function InitHexagonalGrid(_tile_type, _offset_type, _size, _ox, _oy, _max_width
 		hex_map_load("Default Layout");
 		instance_destroy();
 	}
-
 }
 
 function hex_find_nearest_goal(hex)
@@ -194,7 +194,15 @@ function hex_grid_mouse_coord(){
 		return mouse_hex_last_valid_coord;
 	} return undefined;
 }
-
+function hex_get_neighbor(_hex, _direction){
+	var rtn = -1;
+	with(global.i_hex_grid)
+	{	// combine hex and the unit vector for the given direction, then check if the new hex is valid
+		rtn = vect_add(_hex,global.i_hex_grid.hex_unit_vectors[_direction]);
+		if(hex_get_index(rtn) == -1) rtn = -1;
+	}
+	return rtn;
+}
 //--// distances
 function axial_distance(v0, v1){
 	return (
@@ -348,6 +356,14 @@ function hex_in_intersection(vec0, rad0, vec1, rad1){
 }
 
 //--// extra functionality, for specific game purpose
+function hex_is_enabled(_hex){
+	with(global.i_hex_grid)
+	{
+		var _ind = hex_get_index(_hex);
+		if(_ind == -1) return -1;
+		return hexarr_enabled[_ind];
+	}
+}
 function hex_enable_index(index){
 	if(hexarr_enabled[index] == false)
 	{

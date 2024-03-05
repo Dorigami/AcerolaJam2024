@@ -7,6 +7,8 @@ function Update(){
 	// steer toward desired direction
 	EntityMovement();
 	
+	CheckNodeChange(id);
+	
 	// update position relative to the gui layer
 	if(visible){
 		gui_x = position[1] - camera_get_view_x(view_camera[0]);

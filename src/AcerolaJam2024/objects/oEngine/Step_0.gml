@@ -32,7 +32,16 @@ if(!is_undefined(camera_pan)){
 		yTo += _vect[2];
 	}
 }
-
+if(!is_undefined(player_move_command)){
+	var _oldhex = global.i_player.hex;
+	var _newhex = hex_get_neighbor(_oldhex, player_move_command.value);
+	if(hex_is_enabled(_newhex) && (!array_equals(_oldhex, _newhex))){
+		var _point = hex_to_pixel(_newhex, true);
+		global.i_player.xTo = _point[1];
+		global.i_player.yTo = _point[2];
+	}
+	show_debug_message("move command: {0} | old: {1} | new: {2}", player_move_command, _oldhex, _newhex);
+}
 var _zoom = !is_undefined(camera_zoomout) + 2*!is_undefined(camera_zoomin);
 if(_zoom > 0)
 {

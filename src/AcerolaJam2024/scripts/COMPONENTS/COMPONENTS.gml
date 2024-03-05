@@ -1,4 +1,4 @@
-Fighter = function(_hp, _strength, _defense, _speed, _range, _basic_attack=undefined, _active_attack=undefined) constructor{
+Fighter = function(_hp, _strength, _defense, _speed, _range, _xp, _basic_attack=undefined, _active_attack=undefined) constructor{
     owner = undefined;
 	hp = _hp;
     hp_max = _hp;
@@ -8,6 +8,7 @@ Fighter = function(_hp, _strength, _defense, _speed, _range, _basic_attack=undef
     range = _range;
 	death_object = -1;
 	enemies_in_range = ds_list_create();
+	xp_reward = _xp;
 
 	kill_count = 0;
 	fight_behavior = -1;
@@ -150,4 +151,6 @@ Fighter = function(_hp, _strength, _defense, _speed, _range, _basic_attack=undef
 	static Destroy = function(){
 		ds_list_destroy(enemies_in_range);
 	}
+}
+Inventory = function() constructor{
 }
