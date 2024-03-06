@@ -5,7 +5,9 @@ mouse_action = handle_mouse(global.game_state);
 action = handle_keys(global.game_state);
 
 //--// parse inputs
+
 escape = action[$ "escape"];
+start_level = action[$ "start_level"];
 player_move_command = mouse_action[$ "player_move_command"];
 camera_pan = action[$ "camera_pan"];
 camera_fast_pan = action[$ "camera_fast_pan"];
@@ -62,7 +64,12 @@ if(_zoom > 0)
 		}
 	}
 }
-	
+if(!is_undefined(start_level)){
+	with(oLevelManager)
+	{
+		LevelBegin(300000);
+	}
+}	
 if(!is_undefined(escape)){
 	show_debug_message("ESCAPE ACTION")
 	switch(global.game_state)
@@ -70,10 +77,25 @@ if(!is_undefined(escape)){
 		default:
 			if(ds_stack_size(menu_stack) == 0)
 			{
-				// pause the game
-				show_debug_message("Pause Game");
-				global.game_state_previous = global.game_state;
-				global.game_state = GameStates.PAUSE;
+				if(global.game_state != GameStates.PAUSE)
+				{
+					// pause the game
+					show_debug_message("Pause Game");
+					global.game_state_previous = global.game_state;
+					global.game_state = GameStates.PAUSE;
+					with(oLevelManager)
+					{
+						LevelPause();
+					}
+				} else {
+					// unpause the game
+					show_debug_message("Pause Game");
+					global.game_state = global.game_state_previous;
+					with(oLevelManager)
+					{
+						LevelUnpause();	
+					}	
+				}
 			} else {
 				// remove menu off of the stack
 				show_debug_message("Exit Current Menu");

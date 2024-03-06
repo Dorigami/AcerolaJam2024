@@ -74,7 +74,7 @@ function handle_keys(game_state){
 			return handle_play_keys();
 			break;
 		case GameStates.PAUSE:
-			return handle_play_keys();
+			return handle_pause_keys();
 			break;
 		case GameStates.VICTORY:
 			return handle_play_keys();
@@ -86,6 +86,11 @@ function handle_keys(game_state){
 }
 
 function handle_play_keys(){
+	// start the level 
+	if(keyboard_check_pressed(vk_enter))
+	{
+		return {start_level : new Command("start_level",true,0,0)}
+	}
     // pause
     if(keyboard_check_pressed(vk_escape))
     {
@@ -103,4 +108,11 @@ function handle_play_keys(){
         }
     }
     return {}
+}
+function handle_pause_keys(){
+    // unpause
+    if(keyboard_check_pressed(vk_escape))
+    {
+		return {escape : new Command("escape",true,0,0)}
+	}
 }

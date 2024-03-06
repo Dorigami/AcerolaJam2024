@@ -8,6 +8,9 @@
 #macro IN 1
 #macro UPPERDEPTH -5000
 #macro LOWERDEPTH 0
+#macro FACTION_NEUTRAL 0
+#macro FACTION_PLAYER 1
+#macro FACTION_ENEMY 2
 
 enum GameStates 
 {
