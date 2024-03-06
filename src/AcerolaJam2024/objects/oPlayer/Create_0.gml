@@ -3,6 +3,7 @@
 // Inherit the parent event
 event_inherited();
 
+faction = FACTION_PLAYER;
 //animation
 spr_idle = s_player_idle;
 spr_move = s_player_move;

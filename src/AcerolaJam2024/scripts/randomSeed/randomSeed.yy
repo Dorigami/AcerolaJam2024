@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"randomSeed",
   "parent":{
-    "name":"Perlin Noise",
-    "path":"folders/Scripts/Map Algorithms/Perlin Noise.yy",
+    "name":"Map Algorithms",
+    "path":"folders/Scripts/Map Algorithms.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

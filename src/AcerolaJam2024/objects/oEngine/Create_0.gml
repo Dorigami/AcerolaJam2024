@@ -42,7 +42,7 @@ global.game_state = GameStates.PLAY;
 global.game_state_previous = global.game_state;
 global.mouse_focus = noone;
 global.playpace = [0,0,0,0];
-global.seed = 1000001;
+global.seed = irandom(1000000);
 
 action = {};
 mouse_action = {};

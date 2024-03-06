@@ -1,7 +1,7 @@
 function getPerlinNoise_2D(xx, yy, range)
 {
 
-	var chunkSize = 16;
+	var chunkSize = 8;
 
 	var noise = 0;
 

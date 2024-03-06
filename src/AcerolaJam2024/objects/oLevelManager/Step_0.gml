@@ -9,9 +9,16 @@ if(level_time_elapsed < level_time_duration)
 		var _remaining_ms = level_time_duration - _elapsed_ms; 
 		timer_minutes_string = string(_remaining_ms div 60000);
 		timer_seconds_string = string((_remaining_ms div 1000) % 60);
-		timer_milliseconds_string = string(_remaining_ms % 1000);
+		timer_milliseconds_string = string((_remaining_ms % 1000) div 10);
 		while(string_length(timer_minutes_string) < 2) timer_minutes_string = "0"+timer_minutes_string;
 		while(string_length(timer_seconds_string) < 2) timer_seconds_string = "0"+timer_seconds_string;
-		while(string_length(timer_milliseconds_string) < 3) timer_milliseconds_string = "0"+timer_milliseconds_string;
+		while(string_length(timer_milliseconds_string) < 2) timer_milliseconds_string = "0"+timer_milliseconds_string;
+		if(_remaining_ms <= 0)
+		{
+			timer_minutes_string = "00";
+			timer_seconds_string = "00";
+			timer_milliseconds_string = "00";
+			LevelComplete();
+		}
 	}
 }

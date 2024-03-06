@@ -12,8 +12,8 @@
   "duration":1.333333,
   "name":"snd_player_move",
   "parent":{
-    "name":"Entities",
-    "path":"folders/Sounds/Entities.yy",
+    "name":"Player",
+    "path":"folders/Sounds/Entities/Player.yy",
   },
   "preload":false,
   "resourceType":"GMSound",

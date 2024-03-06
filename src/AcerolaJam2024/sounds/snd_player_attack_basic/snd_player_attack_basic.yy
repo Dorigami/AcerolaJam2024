@@ -12,8 +12,8 @@
   "duration":0.397506,
   "name":"snd_player_attack_basic",
   "parent":{
-    "name":"Entities",
-    "path":"folders/Sounds/Entities.yy",
+    "name":"Player",
+    "path":"folders/Sounds/Entities/Player.yy",
   },
   "preload":false,
   "resourceType":"GMSound",

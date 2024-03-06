@@ -145,6 +145,13 @@ function InitHexagonalGrid(_tile_type, _offset_type, _size, _ox, _oy, _max_width
 	}
 }
 
+function hex_xy_to_qr(_v2)
+{
+	return vect2(
+			_v2[2],
+			_v2[1] - floor(_v2[2]/2)
+	);
+}
 function hex_find_nearest_goal(hex)
 {
 	// this will return either, undefined, or the hex of the nearest goal node
@@ -360,7 +367,7 @@ function hex_is_enabled(_hex){
 	with(global.i_hex_grid)
 	{
 		var _ind = hex_get_index(_hex);
-		if(_ind == -1) return -1;
+		if(is_undefined(_ind)) return -1;
 		return hexarr_enabled[_ind];
 	}
 }
