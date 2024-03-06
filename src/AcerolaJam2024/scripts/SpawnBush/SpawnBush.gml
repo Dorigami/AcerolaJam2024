@@ -1,0 +1,3 @@
+function SpawnBush(_threshold){
+
+}

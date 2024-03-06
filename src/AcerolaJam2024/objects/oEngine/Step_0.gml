@@ -67,7 +67,7 @@ if(_zoom > 0)
 if(!is_undefined(start_level)){
 	with(oLevelManager)
 	{
-		LevelBegin(300000);
+		LevelBegin(100000);
 	}
 }	
 if(!is_undefined(escape)){
