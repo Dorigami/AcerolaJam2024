@@ -4,6 +4,7 @@ Fighter = function(_hp, _strength, _defense, _speed, _range, _xp, _basic_attack=
     hp_max = _hp;
     sanity = 100;
 	sanity_max = 100;
+	foraging = 1;
 	strength = _strength;
 	defense = _defense;
     speed = _speed;

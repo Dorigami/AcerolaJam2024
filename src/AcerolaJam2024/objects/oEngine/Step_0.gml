@@ -129,6 +129,7 @@ if(global.game_state != GameStates.PAUSE)
 		with(pEntity)
 		{
 			if(!is_undefined(fighter)) fighter.FindEnemies();
+			if(object_index == oBush){ CheckForPlayer() }
 		}
 	}
 }

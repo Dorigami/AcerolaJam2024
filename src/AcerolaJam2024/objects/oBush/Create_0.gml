@@ -1,5 +1,14 @@
 /// @description 
 
+player_in_range = false;
+function CheckForPlayer(){
+	player_in_range = false;
+	if(ds_list_find_index(fighter.enemies_in_range, global.i_player) > -1)
+	{
+		
+	}
+}
+
 // Inherit the parent event
 event_inherited();
 
