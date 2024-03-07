@@ -125,7 +125,8 @@ sound_death = snd_empty;
 name = "";
 attack_direction = 0;
 collision_radius = 10;
-moveable = true;
+col_moveable = true;
+col_ignored = false;
 shadow_scale = 0.5 * sprite_get_width(sprite_index) / sprite_get_width(sShadow);
 nodes_in_range = [];
 

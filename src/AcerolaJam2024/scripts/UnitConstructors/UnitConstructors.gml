@@ -114,7 +114,7 @@ function ConstructUnit(_x, _y, _faction, _type_string){
 			size_check : _stats.size[0]+_stats.size[1],
 			
 			// movement variables
-			moveable : true,
+			col_moveable : true,
 			attack_move_penalty : 0,
 			external_move_penalty : 0,
 			collision_radius : _stats.collision_radius,
