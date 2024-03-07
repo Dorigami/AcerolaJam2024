@@ -69,3 +69,8 @@ function room_start_init_camera(){
 		yTo = (cam_bounds[1]+cam_bounds[3]) div 2; y = yTo;
 	}
 }
+function room_start_init_hud(){
+	instance_create_depth(50,50,UPPERDEPTH,o_hud_player_healthbar);
+	instance_create_depth(50,70,UPPERDEPTH,o_hud_player_sanitybar);
+	instance_create_depth(20,100,UPPERDEPTH,o_hud_player_inventory);
+}

@@ -6,18 +6,19 @@ function TimedEnemyPlacement(){
 	show_debug_message("timed enemy placement");
 }
 
-function LevelBegin(_duration){
+function LevelBegin(_level_time=120, _bush_interval=20, _enemy_interval=15){
 	with(oLevelManager)
 	{
 		if(!level_begin)
 		{
-			level_index++;
+			// reconfigure the time sources
+			time_source_reconfigure(ts_level_timer,_level_time,time_source_units_seconds,LevelComplete,[],1);
+			time_source_reconfigure(ts_bush_timer,_bush_interval,time_source_units_seconds,TimedBushPlacement,[],1);
+			time_source_reconfigure(ts_enemy_timer,_enemy_interval,time_source_units_seconds,TimedEnemyPlacement,[],1);
 			// set parameters
+			level_index++;
 			level_begin = true;
 			level_running = true;
-			level_time_duration = _duration;
-			level_time_elapsed = 0;
-			level_time_start = current_time;
 		
 			// place bushes and inital enemies
 			SpawnBush(0.1);
@@ -33,9 +34,8 @@ function LevelPause(){
 	with(oLevelManager)
 	{
 		level_running = false;
-		level_time_elapsed += current_time - level_time_start;
-		level_time_paused = current_time;
 	
+		time_source_pause(ts_level_timer);
 		time_source_pause(ts_bush_timer);
 		time_source_pause(ts_enemy_timer);
 	}
@@ -44,8 +44,8 @@ function LevelUnpause(){
 	with(oLevelManager)
 	{
 		level_running = true;
-		level_time_start = current_time;
 
+		time_source_resume(ts_level_timer);
 		time_source_resume(ts_bush_timer);
 		time_source_resume(ts_enemy_timer);
 	}

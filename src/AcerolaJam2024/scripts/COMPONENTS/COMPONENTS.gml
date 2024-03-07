@@ -2,7 +2,9 @@ Fighter = function(_hp, _strength, _defense, _speed, _range, _xp, _basic_attack=
     owner = undefined;
 	hp = _hp;
     hp_max = _hp;
-    strength = _strength;
+    sanity = 100;
+	sanity_max = 100;
+	strength = _strength;
 	defense = _defense;
     speed = _speed;
     range = _range;
@@ -153,6 +155,10 @@ Fighter = function(_hp, _strength, _defense, _speed, _range, _xp, _basic_attack=
 	}
 }
 Inventory = function() constructor{
+	flower1_name = "FLOWER 1";
+	flower2_name = "FLOWER 2";
+	flower3_name = "FLOWER 3";
+	flower4_name = "FLOWER 4";
 	flower1 = 0;
 	flower2 = 0;
 	flower3 = 0;

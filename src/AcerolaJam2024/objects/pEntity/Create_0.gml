@@ -1,6 +1,7 @@
 /// @description 
 
 fighter = undefined;
+Inventory = undefined;
 ai = undefined;
 
 function Update(){
