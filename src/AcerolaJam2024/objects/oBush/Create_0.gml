@@ -1,11 +1,26 @@
 /// @description 
 
 player_in_range = false;
+foraging_progress = 0;
+foraging_threshold = 60;
+foraging_charges = 10;
+foraging_probs = [1.0,0.6,0.4,0.2];
 function CheckForPlayer(){
-	player_in_range = false;
-	if(ds_list_find_index(fighter.enemies_in_range, global.i_player) > -1)
-	{
-		
+	player_in_range = ds_list_find_index(fighter.enemies_in_range, global.i_player) > -1;
+}
+function ConsumeForagingCharge(){
+	foraging_charges--;
+	foraging_progress = 0;
+	foraging_threshold *= 1.1;
+	var _rand = random(1);
+	if(_rand < foraging_probs[3]){
+		global.i_player.inventory.flower4++;
+	} else if(_rand < foraging_probs[2]){
+		global.i_player.inventory.flower3++;
+	} else if(_rand < foraging_probs[1]){
+		global.i_player.inventory.flower2++;
+	} else {
+		global.i_player.inventory.flower1++;
 	}
 }
 
