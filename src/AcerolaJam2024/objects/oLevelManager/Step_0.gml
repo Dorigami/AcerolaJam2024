@@ -5,20 +5,14 @@ if(level_time_elapsed < level_time_duration)
 {
 	if(level_running)
 	{
-		var _elapsed_ms = level_time_elapsed + current_time-level_time_start
-		var _remaining_ms = level_time_duration - _elapsed_ms; 
-		timer_minutes_string = string(_remaining_ms div 60000);
-		timer_seconds_string = string((_remaining_ms div 1000) % 60);
-		timer_milliseconds_string = string((_remaining_ms % 1000) div 10);
+		// convert the level time remaining into a readable string
+		var _time = int64(time_source_get_time_remaining(ts_level_timer)*1000);
+		show_debug_message("current_time: {0}" ,string(frac(_time)));
+		timer_minutes_string = string(_time div 60000);
+		timer_seconds_string = string((_time div 1000) % 60);
+		timer_milliseconds_string = string((_time % 1000) div 10);
 		while(string_length(timer_minutes_string) < 2) timer_minutes_string = "0"+timer_minutes_string;
 		while(string_length(timer_seconds_string) < 2) timer_seconds_string = "0"+timer_seconds_string;
 		while(string_length(timer_milliseconds_string) < 2) timer_milliseconds_string = "0"+timer_milliseconds_string;
-		if(_remaining_ms <= 0)
-		{
-			timer_minutes_string = "00";
-			timer_seconds_string = "00";
-			timer_milliseconds_string = "00";
-			LevelComplete();
-		}
 	}
 }
