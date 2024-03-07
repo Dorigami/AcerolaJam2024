@@ -1,9 +1,9 @@
 {
   "$GMScript":"",
-  "%Name":"COMPONENTS",
+  "%Name":"COMPONENTS_GENERAL",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"COMPONENTS",
+  "name":"COMPONENTS_GENERAL",
   "parent":{
     "name":"Scripts",
     "path":"folders/Scripts.yy",

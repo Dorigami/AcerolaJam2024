@@ -24,7 +24,7 @@ color7 = make_colour_rgb(255,236,214);
 HexFunctions();	
 MACROS();
 STRUCTS();
-COMPONENTS();
+COMPONENTS_GENERAL();
 randomize();
 game_set_speed(FRAME_RATE, gamespeed_fps);
 InitializeDisplay(ASPECT_RATIO);

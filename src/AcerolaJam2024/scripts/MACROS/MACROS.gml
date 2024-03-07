@@ -12,6 +12,10 @@
 #macro FACTION_NEUTRAL 0
 #macro FACTION_PLAYER 1
 #macro FACTION_ENEMY 2
+// AI Behaviors
+#macro PASSIVE 0
+#macro DEFENSIVE 1
+#macro AGGRESSIVE 2
 
 enum GameStates 
 {

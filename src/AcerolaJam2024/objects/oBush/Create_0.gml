@@ -7,6 +7,7 @@ foraging_charges = 10;
 foraging_probs = [1.0,0.6,0.4,0.2];
 function CheckForPlayer(){
 	player_in_range = ds_list_find_index(fighter.enemies_in_range, global.i_player) > -1;
+	if(player_in_range) global.i_player.ai.foraging_id = id;
 }
 function ConsumeForagingCharge(){
 	foraging_charges--;
@@ -39,5 +40,9 @@ sound_spawn = snd_bush_spawn;
 sound_move = snd_bush_move;
 sound_attack = snd_empty;
 sound_death = snd_bush_death;
+
+// overwrite parent values
+movement_script = BushMovement;
+col_ignored = true;
 
 InstantiateBushComponents(10,1,1,0,0,10);

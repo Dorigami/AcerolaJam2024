@@ -1,5 +1,5 @@
-Fighter = function(_hp, _strength, _defense, _speed, _range, _xp, _basic_attack=undefined, _active_attack=undefined) constructor{
-    owner = undefined;
+Fighter = function(_hp, _strength, _defense, _speed, _range, _xp, _basic_attack=undefined, _active_attack=undefined, _owner=noone) constructor{
+    owner = _owner;
 	hp = _hp;
     hp_max = _hp;
     sanity = 100;
@@ -155,7 +155,8 @@ Fighter = function(_hp, _strength, _defense, _speed, _range, _xp, _basic_attack=
 		ds_list_destroy(enemies_in_range);
 	}
 }
-Inventory = function() constructor{
+Inventory = function(_owner=noone) constructor{
+	owner = _owner;
 	flower1_name = "FLOWER 1";
 	flower2_name = "FLOWER 2";
 	flower3_name = "FLOWER 3";

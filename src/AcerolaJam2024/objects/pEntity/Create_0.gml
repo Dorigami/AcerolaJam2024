@@ -6,7 +6,7 @@ ai = undefined;
 
 function Update(){
 	// steer toward desired direction
-	EntityMovement();
+	script_execute(movement_script);
 	
 	CheckNodeChange(id);
 	
@@ -68,7 +68,7 @@ function Update(){
     // update the healthbars' position
     if(visible)
     {
-		depth = LOWERDEPTH - 0.3*y;
+		depth = ENTITYDEPTH - 0.3*y*(object_index != oBush);
 
         basicattackbar_bbox[0] = bbox_left;
         basicattackbar_bbox[1] = bbox_top-4*bar_height;
@@ -121,6 +121,7 @@ sound_spawn = snd_empty;
 sound_move = snd_empty;
 sound_attack = snd_empty;
 sound_death = snd_empty;	
+movement_script = EntityMovement;
 // misc variables 
 name = "";
 attack_direction = 0;

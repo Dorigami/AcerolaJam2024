@@ -18,10 +18,9 @@ function InstantiatePlayerComponents(_health,_strength,_defense,_speed,_range,_x
 		damage_value : 1,
 		damage_obj : o_player_active 
 	}
-	fighter = new global.i_engine.Fighter(_health,_strength,_defense,_speed,_range,_xp,_basic,_active)
-	fighter.owner = id;
-	
-	inventory = new global.i_engine.Inventory()
+	fighter = new global.i_engine.Fighter(_health,_strength,_defense,_speed,_range,_xp,_basic,_active,id);
+	ai = new global.i_engine.PlayerAI(DEFENSIVE, id);
+	inventory = new global.i_engine.Inventory(id);
 	
 }
 function InstantiateBushComponents(_health,_strength,_defense,_speed,_range,_xp){
@@ -44,10 +43,7 @@ function InstantiateBushComponents(_health,_strength,_defense,_speed,_range,_xp)
 		damage_value : 1,
 		damage_obj : o_player_active 
 	}
-	fighter = new global.i_engine.Fighter(_health,_strength,_defense,_speed,_range,_xp,_basic,_active)
-	fighter.owner = id;
-	
-	inventory = new global.i_engine.Inventory()
+	fighter = new global.i_engine.Fighter(_health,_strength,_defense,_speed,_range,_xp,_basic,_active,id);
 
 	// run update script on object
 	Update();
