@@ -111,3 +111,6 @@ switch(behavior){
 		
 	}
 }
+EnemyAI = function(_behavior, _owner) constructor{
+
+}

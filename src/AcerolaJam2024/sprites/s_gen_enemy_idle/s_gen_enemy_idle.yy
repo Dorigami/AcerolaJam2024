@@ -1,6 +1,6 @@
 {
   "$GMSprite":"",
-  "%Name":"s_bush_death",
+  "%Name":"s_gen_enemy_idle",
   "bboxMode":0,
   "bbox_bottom":30,
   "bbox_left":1,
@@ -12,28 +12,28 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"29f4c84c-d9ea-4ca8-a56d-50f39aef1c0f","name":"29f4c84c-d9ea-4ca8-a56d-50f39aef1c0f","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"","%Name":"d5ff6f71-e5fc-45c5-9b7e-17d0ac5ee31d","name":"d5ff6f71-e5fc-45c5-9b7e-17d0ac5ee31d","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,
   "height":32,
   "HTile":false,
   "layers":[
-    {"$GMImageLayer":"","%Name":"07ea7b45-7345-49e5-bb1a-5c661f7db69b","blendMode":0,"displayName":"default","isLocked":false,"name":"07ea7b45-7345-49e5-bb1a-5c661f7db69b","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
+    {"$GMImageLayer":"","%Name":"37799032-c850-4614-b060-5ff1566045b7","blendMode":0,"displayName":"default","isLocked":false,"name":"37799032-c850-4614-b060-5ff1566045b7","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
   ],
-  "name":"s_bush_death",
+  "name":"s_gen_enemy_idle",
   "nineSlice":null,
   "origin":4,
   "parent":{
-    "name":"Bush",
-    "path":"folders/Sprites/Entities/Bush.yy",
+    "name":"Generic Enemy",
+    "path":"folders/Sprites/Entities/Generic Enemy.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",
   "resourceVersion":"2.0",
   "sequence":{
     "$GMSequence":"",
-    "%Name":"s_bush_death",
+    "%Name":"s_gen_enemy_idle",
     "autoRecord":true,
     "backdropHeight":768,
     "backdropImageOpacity":0.5,
@@ -57,7 +57,7 @@
       "resourceType":"KeyframeStore<MomentsEventKeyframe>",
       "resourceVersion":"2.0",
     },
-    "name":"s_bush_death",
+    "name":"s_gen_enemy_idle",
     "playback":1,
     "playbackSpeed":15.0,
     "playbackSpeedType":0,
@@ -69,8 +69,8 @@
     "tracks":[
       {"$GMSpriteFramesTrack":"","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"$KeyframeStore<SpriteFrameKeyframe>":"","Keyframes":[
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"29f4c84c-d9ea-4ca8-a56d-50f39aef1c0f","path":"sprites/s_bush_death/s_bush_death.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"b380cdd0-cf8c-4760-bbb3-2c073222a375","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"d5ff6f71-e5fc-45c5-9b7e-17d0ac5ee31d","path":"sprites/s_gen_enemy_idle/s_gen_enemy_idle.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+              },"Disabled":false,"id":"90ee940b-0807-49fa-8890-b05339d9a1e1","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
           ],"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"2.0",},"modifiers":[],"name":"frames","resourceType":"GMSpriteFramesTrack","resourceVersion":"2.0","spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],
     "visibleRange":null,
