@@ -87,7 +87,6 @@
     {"id":{"name":"COMPONENTS_GENERAL","path":"scripts/COMPONENTS_GENERAL/COMPONENTS_GENERAL.yy",},},
     {"id":{"name":"CreateFloatNumber","path":"scripts/CreateFloatNumber/CreateFloatNumber.yy",},},
     {"id":{"name":"ds_grid_print","path":"scripts/ds_grid_print/ds_grid_print.yy",},},
-    {"id":{"name":"EnemyConstructor","path":"scripts/EnemyConstructor/EnemyConstructor.yy",},},
     {"id":{"name":"EnforceMinDistance","path":"scripts/EnforceMinDistance/EnforceMinDistance.yy",},},
     {"id":{"name":"generate_noise_grid","path":"scripts/generate_noise_grid/generate_noise_grid.yy",},},
     {"id":{"name":"getPerlinNoise_2D","path":"scripts/getPerlinNoise_2D/getPerlinNoise_2D.yy",},},

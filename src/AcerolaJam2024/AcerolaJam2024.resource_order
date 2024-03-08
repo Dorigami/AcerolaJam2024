@@ -62,7 +62,6 @@
     {"name":"COMPONENTS_GENERAL","order":8,"path":"scripts/COMPONENTS_GENERAL/COMPONENTS_GENERAL.yy",},
     {"name":"CreateFloatNumber","order":15,"path":"scripts/CreateFloatNumber/CreateFloatNumber.yy",},
     {"name":"ds_grid_print","order":5,"path":"scripts/ds_grid_print/ds_grid_print.yy",},
-    {"name":"EnemyConstructor","order":23,"path":"scripts/EnemyConstructor/EnemyConstructor.yy",},
     {"name":"EnforceMinDistance","order":12,"path":"scripts/EnforceMinDistance/EnforceMinDistance.yy",},
     {"name":"getPerlinNoise_2D","order":2,"path":"scripts/getPerlinNoise_2D/getPerlinNoise_2D.yy",},
     {"name":"getPerlinNoise","order":1,"path":"scripts/getPerlinNoise/getPerlinNoise.yy",},

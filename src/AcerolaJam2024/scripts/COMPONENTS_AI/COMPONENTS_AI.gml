@@ -89,11 +89,11 @@ EnemyAI = function(_behavior, _owner) constructor{
 	owner = _owner;
 	aggro_flag = false;
 	aggro_chase_dist = 3;
-	action_time = FRAME_RATE*5;
+	action_time = FRAME_RATE*2;
 	action_timer = 1;
 	static Update = function(){
 		var _target = GetAutoAttackTarget();
-		
+		if(_target != noone) && (!aggro_flag) aggro_flag = true;
 		if(--action_timer == 0)
 		{
 			// stop chasing if the player gets too far away
@@ -113,19 +113,21 @@ EnemyAI = function(_behavior, _owner) constructor{
 						{
 							owner.attack_direction = point_direction(owner.position[1], owner.position[2], _target.position[1], _target.position[2]);
 							UseBasic();
-							other.action_timer = basic_attack.cooldown*FRAME_RATE;
 						}
 					}
 				} else {
-					var _dir = 30 + point_direction(owner.position[1], owner.position[2], global.i_player.position[1], global.i_player.position[2]);
-					if(_dir >= 360) _dir -= 360;
-					_dir = _dir div 60;
-					axial_direction()
-					owner.Move(_dir);
+					// move toward the player if its not close enough to attack
+					owner.Move(point_direction(owner.position[1], owner.position[2], global.i_player.position[1], global.i_player.position[2]));
 				}
 			} else {
 				// wander
+				var _move_chance = 0.1;
+				if(random(1) < _move_chance){
+					owner.Move(irandom(5)*60);
+				}
 			}
+			action_timer = max(1, min(action_time, owner.move_timer));
+			if(_target != noone) action_timer = min(action_timer, owner.fighter.basic_cooldown_timer);
 		}
 		
 		// only attack if the focus target is an enemy, 

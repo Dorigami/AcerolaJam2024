@@ -102,6 +102,7 @@ Fighter = function(_hp, _strength, _defense, _speed, _range, _xp, _basic_attack=
 		}
 		if(_other_fighter.hp <= 0)
 		{	
+			attack_target = noone;
 			// deal out rewards
 			reward_exp(_other_fighter.xp, owner.faction);
 			// incrememnt kill count

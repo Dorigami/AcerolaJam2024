@@ -1,13 +1,30 @@
 /// @description 
-
 fighter = undefined;
 Inventory = undefined;
 ai = undefined;
 
+function Move(_direction){
+	// get direction index for hexagonal movement
+	var _dir_index = 30 + _direction;
+	if(_dir_index >= 360) _dir_index -= 360;
+	_dir_index = _dir_index div 60 == 6 ? 0 : _dir_index div 60;
+	// get the hex vectors
+	var _oldhex = hex;
+	var _newhex = hex_get_neighbor(_oldhex, _dir_index);
+	// commit movement
+	if(hex_is_enabled(_newhex) && (!array_equals(_oldhex, _newhex))){
+		var _point = hex_to_pixel(_newhex, true);
+		xTo = _point[1];
+		yTo = _point[2];
+	}	
+	// set move cooldown timer
+	move_timer = max(10, FRAME_RATE*((21-fighter.speed)/20));
+}
+
 function Update(){
 	// steer toward desired direction
 	script_execute(movement_script);
-	
+	if(move_timer > -1) move_timer--;
 	CheckNodeChange(id);
 	
 	// update position relative to the gui layer
@@ -125,6 +142,7 @@ movement_script = EntityMovement;
 // misc variables 
 name = "";
 attack_direction = 0;
+move_timer = -1;
 collision_radius = 10;
 col_moveable = true;
 col_ignored = false;

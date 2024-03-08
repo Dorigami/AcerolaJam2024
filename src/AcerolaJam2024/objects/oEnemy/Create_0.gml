@@ -27,7 +27,7 @@ switch(type_string)
 		var _s = {
 			hp : 4,	str : 1, def : 1,
 			spd : 1, rng : 1, xp : 10,
-			bhvr : PASSIVE,
+			bhvr : AGGRESSIVE,
 		}
 		break;
 }

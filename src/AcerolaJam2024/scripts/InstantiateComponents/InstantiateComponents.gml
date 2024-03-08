@@ -19,7 +19,7 @@ function InstantiatePlayerComponents(_health,_strength,_defense,_speed,_range,_x
 		damage_obj : o_player_active 
 	}
 	fighter = new global.i_engine.Fighter(_health,_strength,_defense,_speed,_range,_xp,_basic,_active,id);
-	ai = new global.i_engine.PlayerAI(AGGRESSIVE, id);
+	ai = new global.i_engine.PlayerAI(DEFENSIVE, id);
 	inventory = new global.i_engine.Inventory(id);
 	
 }
