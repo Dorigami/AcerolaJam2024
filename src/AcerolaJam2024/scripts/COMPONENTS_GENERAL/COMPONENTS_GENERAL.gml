@@ -1,5 +1,7 @@
 Fighter = function(_hp, _strength, _defense, _speed, _range, _xp, _basic_attack=undefined, _active_attack=undefined, _owner=noone) constructor{
     owner = _owner;
+	xp = _xp;
+	xp_next_level = 1000000000;
 	hp = _hp;
     hp_max = _hp;
     sanity = 100;
@@ -11,7 +13,7 @@ Fighter = function(_hp, _strength, _defense, _speed, _range, _xp, _basic_attack=
     range = _range;
 	death_object = -1;
 	enemies_in_range = ds_list_create();
-	xp_reward = _xp;
+	
 
 	kill_count = 0;
 	fight_behavior = -1;
@@ -89,10 +91,9 @@ Fighter = function(_hp, _strength, _defense, _speed, _range, _xp, _basic_attack=
 		if(!instance_exists(_other_fighter.owner)) return false;
 		if(!instance_exists(owner)) return false;
 		if(_other_fighter.hp <= 0) return false; // fighter is already dead
-		var _ent = _other_fighter.owner;
 		var _damClac = max(1, _damage - _other_fighter.defense);
 		// verify entity
-		if(!instance_exists(_ent)) return false; // can't attack non-existance entity
+		if(!instance_exists(_other_fighter.owner)) return false; // can't attack non-existance entity
 		// run calculation
 		_other_fighter.hp -= _damClac // 1 damage minimum is enforced here
 		with(_other_fighter.owner)
@@ -102,14 +103,11 @@ Fighter = function(_hp, _strength, _defense, _speed, _range, _xp, _basic_attack=
 		if(_other_fighter.hp <= 0)
 		{	
 			// deal out rewards
-			increase_money(_other_fighter.owner.material_reward, owner.faction);
-			
+			reward_exp(_other_fighter.xp, owner.faction);
 			// incrememnt kill count
 			kill_count++;
-			
 			// create death effect if applicable
-			KillEntity(_ent);
-			
+			KillEntity(_other_fighter.owner);
 			return true; // fighter has been dealt a killing blow
 		} else {
 			// allow the other fighter to retaliate if they don't already have a retaliate target

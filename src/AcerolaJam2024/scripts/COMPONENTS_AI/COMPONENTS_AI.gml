@@ -87,16 +87,21 @@ EnemyAI = function(_behavior, _owner) constructor{
 	foraging_id = noone;
 	behavior = _behavior;
 	owner = _owner;
+	aggro_flag = false;
+	aggro_chase_dist = 3;
+	action_time = FRAME_RATE*5;
+	action_timer = 1;
 	static Update = function(){
-		var _target = noone;
-		switch(behavior){
-			case PASSIVE:
-				break;
-			case DEFENSIVE:
-				_target = GetAutoAttackTarget();
-				// only attack if the focus target is an enemy, 
-				// or if player has been hurt by something and that something is in 
+		var _target = GetAutoAttackTarget();
 		
+		if(--action_timer == 0)
+		{
+			// stop chasing if the player gets too far away
+			var _player_dist = axial_distance(owner.hex, global.i_player.hex);
+			if(_player_dist < aggro_chase_dist) aggro_flag = false;
+			// behavior changes based on aggro state
+			if(aggro_flag)
+			{
 				// attack any enemy in range, but prioritize the attack command target
 				if(_target != noone) 
 				{
@@ -108,22 +113,33 @@ EnemyAI = function(_behavior, _owner) constructor{
 						{
 							owner.attack_direction = point_direction(owner.position[1], owner.position[2], _target.position[1], _target.position[2]);
 							UseBasic();
+							other.action_timer = basic_attack.cooldown*FRAME_RATE;
 						}
 					}
+				} else {
+					var _dir = 30 + point_direction(owner.position[1], owner.position[2], global.i_player.position[1], global.i_player.position[2]);
+					if(_dir >= 360) _dir -= 360;
+					_dir = _dir div 60;
+					axial_direction()
+					owner.Move(_dir);
 				}
-				break;
-			case AGGRESSIVE:
-				break;
+			} else {
+				// wander
+			}
 		}
+		
+		// only attack if the focus target is an enemy, 
+		// or if player has been hurt by something and that something is in 
+		
+
 	}
 	static GetAutoAttackTarget = function(){
 		var _target = noone;
-		var _valid = true;
-		// dont do checks when passive
-		if(behavior == PASSIVE) return noone;
-		
 		switch(behavior)
 		{
+			case PASSIVE:
+				// dont do checks when passive
+				break;
 			case DEFENSIVE:
 				// player will only auto attack in retaliation
 				with(owner.fighter)
@@ -158,7 +174,7 @@ EnemyAI = function(_behavior, _owner) constructor{
 							if(is_undefined(_target)) || (instance_exists(_target)) continue;
 							
 							// target must be an enemy to be auto attacked
-							if(_target.faction != FACTION_ENEMY) continue;
+							if(_target.faction != FACTION_PLAYER) continue;
 							
 							// valid target found
 							break;
