@@ -23,11 +23,18 @@ sound_death = asset_get_index("snd_"+type_string+"_death") == -1 ? snd_empty: as
 
 switch(type_string)
 {
-	default:
+	case "gen_enemy":
 		var _s = {
 			hp : 4,	str : 1, def : 1,
-			spd : 1, rng : 1, xp : 10,
+			spd : 6, rng : 1, xp : 1,
 			bhvr : AGGRESSIVE,
+		}
+		break;
+	default:
+		var _s = {
+			hp : 1,	str : 1, def : 1,
+			spd : 1, rng : 1, xp : 1,
+			bhvr : PASSIVE,
 		}
 		break;
 }

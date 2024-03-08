@@ -1,0 +1,11 @@
+{
+  "$GMNotes":"",
+  "%Name":"mapData",
+  "name":"mapData",
+  "parent":{
+    "name":"Notes",
+    "path":"folders/Notes.yy",
+  },
+  "resourceType":"GMNotes",
+  "resourceVersion":"2.0",
+}

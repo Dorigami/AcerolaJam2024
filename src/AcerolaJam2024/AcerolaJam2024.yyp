@@ -56,6 +56,7 @@
     {"id":{"name":"f_default_L","path":"fonts/f_default_L/f_default_L.yy",},},
     {"id":{"name":"f_default_s","path":"fonts/f_default_s/f_default_s.yy",},},
     {"id":{"name":"f_float_text","path":"fonts/f_float_text/f_float_text.yy",},},
+    {"id":{"name":"mapData","path":"notes/mapData/mapData.yy",},},
     {"id":{"name":"o_hex_grid_interaction","path":"objects/o_hex_grid_interaction/o_hex_grid_interaction.yy",},},
     {"id":{"name":"o_hex_grid_line_visualizer","path":"objects/o_hex_grid_line_visualizer/o_hex_grid_line_visualizer.yy",},},
     {"id":{"name":"o_hex_grid_save_load_menu","path":"objects/o_hex_grid_save_load_menu/o_hex_grid_save_load_menu.yy",},},

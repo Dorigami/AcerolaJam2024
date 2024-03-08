@@ -88,17 +88,27 @@ EnemyAI = function(_behavior, _owner) constructor{
 	behavior = _behavior;
 	owner = _owner;
 	aggro_flag = false;
-	aggro_chase_dist = 3;
+	aggro_radius = 3;
+	aggro_chase_dist = 4;
 	action_time = FRAME_RATE*2;
 	action_timer = 1;
 	static Update = function(){
 		var _target = GetAutoAttackTarget();
 		if(_target != noone) && (!aggro_flag) aggro_flag = true;
-		if(--action_timer == 0)
+		if(--action_timer <= 0)
 		{
 			// stop chasing if the player gets too far away
 			var _player_dist = axial_distance(owner.hex, global.i_player.hex);
-			if(_player_dist < aggro_chase_dist) aggro_flag = false;
+			if(_player_dist > aggro_chase_dist) 
+			{
+				aggro_flag = false;
+				focus_target = noone;
+			}
+			if(_player_dist <= aggro_radius) && (behavior == AGGRESSIVE) 
+			{
+				aggro_flag = true;
+				focus_target = global.i_player;
+			}
 			// behavior changes based on aggro state
 			if(aggro_flag)
 			{
@@ -117,23 +127,23 @@ EnemyAI = function(_behavior, _owner) constructor{
 					}
 				} else {
 					// move toward the player if its not close enough to attack
-					owner.Move(point_direction(owner.position[1], owner.position[2], global.i_player.position[1], global.i_player.position[2]));
+					with(owner)
+					{
+						if(move_timer <= 0) Move(point_direction(position[1], position[2], global.i_player.position[1], global.i_player.position[2]));
+					}
 				}
 			} else {
 				// wander
 				var _move_chance = 0.1;
 				if(random(1) < _move_chance){
-					owner.Move(irandom(5)*60);
+					with(owner){
+						if(move_timer <= 0) Move(irandom(5)*60);
+					}
 				}
 			}
 			action_timer = max(1, min(action_time, owner.move_timer));
 			if(_target != noone) action_timer = min(action_timer, owner.fighter.basic_cooldown_timer);
 		}
-		
-		// only attack if the focus target is an enemy, 
-		// or if player has been hurt by something and that something is in 
-		
-
 	}
 	static GetAutoAttackTarget = function(){
 		var _target = noone;
@@ -175,8 +185,8 @@ EnemyAI = function(_behavior, _owner) constructor{
 							// skip the target if it is undefined or doesn't exist
 							if(is_undefined(_target)) || (instance_exists(_target)) continue;
 							
-							// target must be an enemy to be auto attacked
-							if(_target.faction != FACTION_PLAYER) continue;
+							// target must be the player to be auto attacked
+							if(_target.faction == FACTION_PLAYER) continue;
 							
 							// valid target found
 							break;
