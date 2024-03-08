@@ -3,7 +3,7 @@
 alpha = 1;
 init = false;
 
-depth = UPPERTEXDEPTH-1;
+depth = UPPERDEPTH-1;
 
 function Draw(){
 	if(!is_undefined(value))

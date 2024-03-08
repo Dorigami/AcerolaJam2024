@@ -143,7 +143,7 @@ Fighter = function(_hp, _strength, _defense, _speed, _range, _xp, _basic_attack=
 					// get entity occupying the hex node
 					_entity = _container[| j];
 					// validate the entity as an enemy
-					if(is_undefined(_entity)) || (!instance_exists(_entity)) || ((_entity.faction == owner.faction) && (_entity.faction != FACTION_NEUTRAL)) continue;
+					if(is_undefined(_entity)) || (!instance_exists(_entity)) || ((_entity.faction == owner.faction)) continue;
 					// entity is valid as an enemy, add it to the list
 					ds_list_add(enemies_in_range, _entity);
 				}

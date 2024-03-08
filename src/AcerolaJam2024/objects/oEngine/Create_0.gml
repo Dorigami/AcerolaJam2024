@@ -25,6 +25,7 @@ HexFunctions();
 MACROS();
 STRUCTS();
 COMPONENTS_GENERAL();
+COMPONENTS_AI();
 randomize();
 game_set_speed(FRAME_RATE, gamespeed_fps);
 InitializeDisplay(ASPECT_RATIO);
