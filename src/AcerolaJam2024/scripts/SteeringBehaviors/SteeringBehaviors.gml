@@ -12,7 +12,7 @@ function EntityMovement(){
 	velocity = vect2(
 		0.12*(xTo-position[1]),
 		0.12*(yTo-position[2]));
-	// track onto goal position
+	// track onto goal position                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
 	position[1] += velocity[1];
 	position[2] += velocity[2];
 
