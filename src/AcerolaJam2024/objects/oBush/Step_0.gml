@@ -2,7 +2,7 @@
 
 if(foraging_charges <= 0) || (global.game_state != GameStates.PLAY) exit;
 
-if(player_in_range)
+if(player_in_range) && (global.i_player.fighter.attack_index == -1)
 {
 	foraging_progress = min(foraging_threshold, foraging_progress + global.i_player.fighter.foraging);	
 } else {

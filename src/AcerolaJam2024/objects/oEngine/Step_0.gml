@@ -9,6 +9,7 @@ action = handle_keys(global.game_state);
 escape = action[$ "escape"];
 start_level = action[$ "start_level"];
 player_move_command = mouse_action[$ "player_move_command"];
+player_focus_command = mouse_action[$ "player_focus_command"];
 camera_pan = action[$ "camera_pan"];
 camera_fast_pan = action[$ "camera_fast_pan"];
 camera_zoomout = mouse_action[$ "camera_zoomout"];
@@ -35,11 +36,12 @@ if(!is_undefined(camera_pan)){
 	}
 }
 if(!is_undefined(player_move_command)){
-	
-	with(global.i_player)
-	{
-		if(move_timer <= 0)	global.i_player.Move(other.player_move_command.value);
-	}
+	global.i_player.Move(other.player_move_command.value);
+}
+if(!is_undefined(player_focus_command)){
+	var _tgt = player_focus_command.value;
+	if(_tgt != noone) && (_tgt.faction == FACTION_PLAYER) _tgt = noone;
+	global.i_player.ai.focus_target = _tgt; 
 }
 var _zoom = !is_undefined(camera_zoomout) + 2*!is_undefined(camera_zoomin);
 if(_zoom > 0)

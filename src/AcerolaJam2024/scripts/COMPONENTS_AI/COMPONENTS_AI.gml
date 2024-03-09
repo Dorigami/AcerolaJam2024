@@ -4,12 +4,42 @@ PlayerAI = function(_behavior,_owner=noone) constructor{
 	behavior = _behavior;
 	owner = _owner;
 	static Update = function(){
-		var _target = GetAutoAttackTarget();
+		var _target = focus_target;
+		if(_target != noone)
+		{
+			if(!instance_exists(focus_target)){focus_target = noone} else {
+				var _direction = point_direction(owner.position[1], owner.position[2],_target.position[1],_target.position[2]);
+				var _tgt_dist = axial_distance(owner.hex, _target.hex);
+				if(_target.object_index == oBush)
+				{
+					// if focus is a bush, then move toward it until hex is shared
+					if(owner.move_timer <= 0) && (_tgt_dist > 0) owner.Move(_direction);
+				} else {
+					// move toward the target until it is in range then attack
+					
+					if(_tgt_dist <= owner.fighter.range)
+					{
+						with(owner.fighter)
+						{
+							// attack valid target
+							if(attack_target != _target) attack_target = _target;
+							if(attack_index == -1) && (basic_cooldown_timer <= 0)
+							{
+								owner.attack_direction = _direction;
+								UseBasic();
+							}
+						}
+					} else {
+						if(owner.move_timer <= 0) owner.Move(_direction);
+					}
+				}
+			}
+			exit;
+		}
 		
-		// only attack if the focus target is an enemy, 
-		// or if player has been hurt by something and that something is in 
-		
-		// attack any enemy in range, but prioritize the attack command target
+		// Auto-Attack behavior will only run when there is no focus target
+		_target = GetAutoAttackTarget();
+		// if there is a valid auto attack target, then attack it
 		if(_target != noone) 
 		{
 			with(owner.fighter)
@@ -183,10 +213,10 @@ EnemyAI = function(_behavior, _owner) constructor{
 						{
 							_target = enemies_in_range[| i];
 							// skip the target if it is undefined or doesn't exist
-							if(is_undefined(_target)) || (instance_exists(_target)) continue;
+							if(is_undefined(_target)) || (!instance_exists(_target)) continue;
 							
 							// target must be the player to be auto attacked
-							if(_target.faction == FACTION_PLAYER) continue;
+							if(_target.faction != FACTION_PLAYER) continue;
 							
 							// valid target found
 							break;

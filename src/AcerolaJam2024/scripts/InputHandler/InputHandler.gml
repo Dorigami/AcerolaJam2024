@@ -28,11 +28,12 @@ function handle_mouse(game_state){
 
 function handle_default_mouse(){
 	// left mouse
-	if(mouse_check_button_released(mb_left)){} 
-    else if mouse_check_button_pressed(mb_left){}
+	if(mouse_check_button_released(mb_left)){
+		return { player_focus_command : new Command("player_focus_command",global.mouse_focus,0,0) }
+	} else if mouse_check_button_pressed(mb_left){}
 
 	// right mouse (allow player to move)
-	if(mouse_check_button_released(mb_right)){
+	if(global.i_player.move_timer <= 0) && (mouse_check_button(mb_right)){
 		if(!array_equals(global.i_hex_grid.mouse_hex_coord, global.i_player.hex))
 		{
 			return { player_move_command : new Command(
