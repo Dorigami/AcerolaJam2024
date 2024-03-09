@@ -25,8 +25,8 @@ switch(type_string)
 {
 	case "gen_enemy":
 		var _s = {
-			hp : 4,	str : 1, def : 1,
-			spd : 6, rng : 1, xp : 1,
+			hp : 3,	str : 1, def : 1,
+			spd : 2, rng : 0, xp : 1,
 			bhvr : AGGRESSIVE,
 		}
 		break;

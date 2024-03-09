@@ -92,10 +92,10 @@ PlayerAI = function(_behavior,_owner=noone) constructor{
 						{
 							_target = enemies_in_range[| i];
 							// skip the target if it is undefined or doesn't exist
-							if(is_undefined(_target)) || (instance_exists(_target)) continue;
+							if(is_undefined(_target)) || (!instance_exists(_target)) {_target=noone; continue}
 							
 							// target must be an enemy to be auto attacked
-							if(_target.faction != FACTION_ENEMY) continue;
+							if(_target.faction != FACTION_ENEMY) {_target=noone; continue}
 							
 							// valid target found
 							break;
@@ -118,8 +118,8 @@ EnemyAI = function(_behavior, _owner) constructor{
 	behavior = _behavior;
 	owner = _owner;
 	aggro_flag = false;
-	aggro_radius = 3;
-	aggro_chase_dist = 4;
+	aggro_radius = 1;
+	aggro_chase_dist = 2;
 	action_time = FRAME_RATE*2;
 	action_timer = 1;
 	static Update = function(){
@@ -127,24 +127,25 @@ EnemyAI = function(_behavior, _owner) constructor{
 		if(_target != noone) && (!aggro_flag) aggro_flag = true;
 		if(--action_timer <= 0)
 		{
-			// stop chasing if the player gets too far away
+			// decide whether to keep chasing or to start chasing
 			var _player_dist = axial_distance(owner.hex, global.i_player.hex);
-			if(_player_dist > aggro_chase_dist) 
-			{
-				aggro_flag = false;
-				focus_target = noone;
+			if(!aggro_flag){
+				if(_player_dist <= aggro_radius) && (behavior == AGGRESSIVE){
+					aggro_flag = true;
+					focus_target = global.i_player;}
+			} else {
+				if(_player_dist > aggro_chase_dist){	
+					aggro_flag = false;
+					focus_target = noone;}
 			}
-			if(_player_dist <= aggro_radius) && (behavior == AGGRESSIVE) 
-			{
-				aggro_flag = true;
-				focus_target = global.i_player;
-			}
+
 			// behavior changes based on aggro state
 			if(aggro_flag)
 			{
 				// attack any enemy in range, but prioritize the attack command target
-				if(_target != noone) 
+				if(owner.fighter.range >= _player_dist) 
 				{
+					_target = focus_target;
 					with(owner.fighter)
 					{
 						// attack valid target
@@ -159,7 +160,9 @@ EnemyAI = function(_behavior, _owner) constructor{
 					// move toward the player if its not close enough to attack
 					with(owner)
 					{
-						if(move_timer <= 0) Move(point_direction(position[1], position[2], global.i_player.position[1], global.i_player.position[2]));
+						if(move_timer <= 0) && (fighter.attack_index == -1){
+							Move(point_direction(position[1], position[2], global.i_player.position[1], global.i_player.position[2]));
+						}
 					}
 				}
 			} else {
@@ -213,16 +216,14 @@ EnemyAI = function(_behavior, _owner) constructor{
 						{
 							_target = enemies_in_range[| i];
 							// skip the target if it is undefined or doesn't exist
-							if(is_undefined(_target)) || (!instance_exists(_target)) continue;
+							if(is_undefined(_target)) || (!instance_exists(_target)) {_target = noone; continue}
 							
 							// target must be the player to be auto attacked
-							if(_target.faction != FACTION_PLAYER) continue;
+							if(_target.faction != FACTION_PLAYER) {_target = noone; continue}
 							
 							// valid target found
 							break;
 						}
-						// make sure this doesn't return 'undefined'
-						if(is_undefined(_target)) { _target = noone; } 
 					}
 				}
 				break;
