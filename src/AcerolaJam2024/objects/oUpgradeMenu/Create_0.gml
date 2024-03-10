@@ -4,7 +4,7 @@
 event_inherited();
 
 x = global.i_camera.x;
-y = global.i_camera.y;
+y = global.i_camera.y + global.i_camera.viewHeightHalf;
 
 gui = true;
 closable = true;

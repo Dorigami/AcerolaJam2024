@@ -16,6 +16,15 @@ camera_zoomout = mouse_action[$ "camera_zoomout"];
 camera_zoomin = mouse_action[$ "camera_zoomin"];
 
 //--// execute inputs
+if(!is_undefined(menu_close_command))
+{
+	if(ds_stack_size(menu_stack) == 0){} else {
+		var _menu = ds_stack_top(menu_stack);
+		if(_menu.closable){
+			instance_destroy(ds_stack_pop(menu_stack));
+		}
+	}
+}
 if(!is_undefined(camera_pan)){
 	var _val = other.camera_pan.value;
 	with(global.i_camera)

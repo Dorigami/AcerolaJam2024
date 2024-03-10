@@ -87,6 +87,17 @@ function handle_keys(game_state){
 }
 
 function handle_play_keys(){
+	if(ds_stack_size(menu_stack) > 0)
+	{
+		if(keyboard_check_pressed(ord("I")))
+	    {
+			return {menu_toggle_upgrades : new Command("menu_toggle_upgrades",true,0,0)}
+		}
+		if(keyboard_check_pressed(vk_escape))
+	    {
+			return {escape : new Command("escape",true,0,0)}
+		}
+	}
 	// start the level 
 	if(keyboard_check_pressed(vk_enter))
 	{

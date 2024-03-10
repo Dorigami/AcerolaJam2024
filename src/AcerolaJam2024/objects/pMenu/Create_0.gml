@@ -325,3 +325,5 @@ enabled = true;
 closable = false;
 
 menuOpen = false;
+
+ds_stack_push(global.i_engine.menu_stack, id);
