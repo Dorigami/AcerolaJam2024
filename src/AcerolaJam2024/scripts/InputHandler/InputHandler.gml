@@ -8,7 +8,7 @@ double_click_timer = -1;
 function handle_mouse(game_state){
 	switch(global.game_state)
 	{
-		case GameStates.MAIN_MENU:
+		case GameStates.MENU:
 			return handle_default_mouse();
 			break;
 		case GameStates.PLAY:
@@ -68,7 +68,7 @@ function handle_default_mouse(){
 function handle_keys(game_state){
 	switch(game_state)
 	{
-		case GameStates.MAIN_MENU:
+		case GameStates.MENU:
 			return handle_play_keys();
 			break;
 		case GameStates.PLAY:

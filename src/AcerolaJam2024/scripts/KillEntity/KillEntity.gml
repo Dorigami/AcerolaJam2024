@@ -8,6 +8,11 @@ function KillEntity(_ent){
 		// play death sound
 		if(sound_death != snd_empty) SoundCommand(sound_death, x, y);
 		// remove entity
-		if(object_index != oPlayer) instance_destroy();
+		if(object_index != oPlayer) 
+		{
+			instance_destroy();
+		} else {
+			// set 'Defeat' state
+		}
 	}
 }

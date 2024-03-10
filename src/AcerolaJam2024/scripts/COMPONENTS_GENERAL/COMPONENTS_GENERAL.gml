@@ -107,7 +107,7 @@ Fighter = function(_hp, _strength, _defense, _speed, _range, _xp, _basic_attack=
 			if(_ind > -1) ds_list_delete(enemies_in_range, _ind);
 			attack_target = noone;
 			// deal out rewards
-			reward_exp(_other_fighter.xp, owner.faction);
+			reward_exp(_other_fighter.xp, owner);
 			// incrememnt kill count
 			kill_count++;
 			// create death effect if applicable

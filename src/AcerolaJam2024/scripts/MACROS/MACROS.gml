@@ -19,7 +19,7 @@
 
 enum GameStates 
 {
-    MAIN_MENU,
+    MENU,
 	PLAY,
 	PAUSE,
     VICTORY,

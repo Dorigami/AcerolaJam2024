@@ -118,7 +118,7 @@ EnemyAI = function(_behavior, _owner) constructor{
 	behavior = _behavior;
 	owner = _owner;
 	aggro_flag = false;
-	aggro_radius = 1;
+	aggro_radius = 2;
 	aggro_chase_dist = 2;
 	action_time = FRAME_RATE*2;
 	action_timer = 1;
@@ -140,12 +140,12 @@ EnemyAI = function(_behavior, _owner) constructor{
 			}
 
 			// behavior changes based on aggro state
-			if(aggro_flag)
+			if(aggro_flag) && (focus_target != noone)
 			{
 				// attack any enemy in range, but prioritize the attack command target
 				if(owner.fighter.range >= _player_dist) 
 				{
-					_target = focus_target;
+					if(focus_target != noone) && instance_exists(focus_target) _target = focus_target;
 					with(owner.fighter)
 					{
 						// attack valid target
