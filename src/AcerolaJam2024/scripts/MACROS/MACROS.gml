@@ -19,7 +19,6 @@
 
 enum GameStates 
 {
-    MENU,
 	PLAY,
 	PAUSE,
     VICTORY,

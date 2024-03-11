@@ -8,11 +8,12 @@ double_click_timer = -1;
 function handle_mouse(game_state){
 	switch(global.game_state)
 	{
-		case GameStates.MENU:
-			return handle_default_mouse();
-			break;
 		case GameStates.PLAY:
-			return handle_default_mouse();
+			if(ds_stack_size(menu_stack) == 0){
+				return handle_default_mouse();
+			} else {
+				return handle_menu_mouse();
+			}
 			break;
 		case GameStates.PAUSE:
 			return handle_default_mouse();
@@ -62,17 +63,29 @@ function handle_default_mouse(){
     } 
     return {}
 }
+function handle_menu_mouse(){
+	// middle mouse / wheel
+	if(mouse_check_button_pressed(mb_middle)){
+        return {}
+    } else if(mouse_wheel_up()){
+        return { menu_scroll_up : new Command("menu_up",true,0,0) }
+    } else if(mouse_wheel_down()){
+		return { menu_scroll_down : new Command("menu_down",true,0,0) }
+    } 
+    return {}
+}
 
 //--// KEYBOARD HANDLERS //--//
-
 function handle_keys(game_state){
 	switch(game_state)
 	{
-		case GameStates.MENU:
-			return handle_play_keys();
-			break;
 		case GameStates.PLAY:
-			return handle_play_keys();
+			if(ds_stack_size(menu_stack) > 0)
+			{
+				return handle_menu_keys();
+			} else {
+				return handle_play_keys();
+			}
 			break;
 		case GameStates.PAUSE:
 			return handle_pause_keys();
@@ -87,15 +100,12 @@ function handle_keys(game_state){
 }
 
 function handle_play_keys(){
-	if(ds_stack_size(menu_stack) > 0)
+
+	if(keyboard_check_pressed(ord("I")))
 	{
-		if(keyboard_check_pressed(ord("I")))
-	    {
-			return {menu_toggle_upgrades : new Command("menu_toggle_upgrades",true,0,0)}
-		}
-		if(keyboard_check_pressed(vk_escape))
-	    {
-			return {escape : new Command("escape",true,0,0)}
+		if(!instance_exists(oUpgradeMenu))
+		{	// open the menu
+			return {menu_open_command : new Command("menu_open",oUpgradeMenu,0,0)}
 		}
 	}
 	// start the level 
@@ -120,6 +130,20 @@ function handle_play_keys(){
         }
     }
     return {}
+}
+function handle_menu_keys(){
+	// menu next item
+	if(keyboard_check_pressed(ord("S"))){ return {menu_next_item : new Command("next_item",true,0,0)} }
+	// menu previous item
+	if(keyboard_check_pressed(ord("W"))){ return {menu_prev_item : new Command("prev_item",true,0,0)} }
+	// menu next tab
+	if(keyboard_check_pressed(ord("D"))){ return {menu_next_tab : new Command("next_tab",true,0,0)} }
+	// menu previous tab
+	if(keyboard_check_pressed(ord("A"))){ return {menu_prev_tab : new Command("prev_tab",true,0,0)} }	
+	// close the menu if possible
+	if(keyboard_check_pressed(vk_escape)){ return {menu_close_command : new Command("menu_close",true,0,0)} }
+	// return nothing
+	return {}
 }
 function handle_pause_keys(){
     // unpause

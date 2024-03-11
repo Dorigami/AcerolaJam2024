@@ -1,0 +1,20 @@
+Elixer!		
+		
+		
+		
+		
+		
+		
+level 4 perception		
+		
+		
+		
+level 3 perception		
+		
+		stealth training: reduces aggro range for aggressive enemies
+	targeted foraging: player can choose which fower to search for when foraging	
+level 2 perception		
+		
+		
+	faster foraging: reduces time need to forage for fowers	
+level 1 perception: base level of the player.  Nothing seems odd yet. [Access to #1 and #2 flowers]		

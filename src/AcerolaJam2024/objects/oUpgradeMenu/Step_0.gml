@@ -1,16 +1,17 @@
 /// @description 
 
-// pan into the center
-var _cx = global.i_camera.x;
-var _cy = global.i_camera.y;
-if(x != _cx) && (y != _cy)
+xTo = global.i_camera.x;
+yTo = global.i_camera.y;
+
+// pan into the center of camera
+if(x != xTo) || (y != yTo)
 {
-	var _xdiff = _cx - x;
-	var _ydiff = _cy - y;
-	if(_xdiff <= 1) && (_ydiff <= 1){
-		x = _cx; y = _cy;
+	var _xdiff = xTo - x;
+	var _ydiff = yTo - y;
+	if(abs(_xdiff) <= 1) && (abs(_ydiff) <= 1){
+		x = xTo; y = yTo;
 	} else {
-		x += 0.1*_cx; y += 0.1*_cy;
+		x += 0.08*_xdiff; y += 0.08*_ydiff;
 	}
 }
 

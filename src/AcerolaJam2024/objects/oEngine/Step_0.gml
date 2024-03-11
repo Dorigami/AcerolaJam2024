@@ -5,6 +5,14 @@ mouse_action = handle_mouse(global.game_state);
 action = handle_keys(global.game_state);
 
 //--// parse inputs
+menu_next_item = action[$ "menu_next_item"];
+menu_prev_item = action[$ "menu_prev_item"];
+menu_next_tab = action[$ "menu_next_tab"];
+menu_prev_tab = action[$ "menu_prev_tab"];
+menu_scroll_up = mouse_action[$ "menu_scroll_up"];
+menu_scroll_down = mouse_action[$ "menu_scroll_down"];
+menu_open_command = action[$ "menu_open_command"];
+menu_close_command = action[$ "menu_close_command"];
 
 escape = action[$ "escape"];
 start_level = action[$ "start_level"];
@@ -16,8 +24,19 @@ camera_zoomout = mouse_action[$ "camera_zoomout"];
 camera_zoomin = mouse_action[$ "camera_zoomin"];
 
 //--// execute inputs
+if(!is_undefined(menu_next_item)){ show_debug_message("menu next item"); }
+if(!is_undefined(menu_prev_item)){ show_debug_message("menu prev item"); }
+if(!is_undefined(menu_next_tab)){ show_debug_message("menu next tab"); }
+if(!is_undefined(menu_prev_tab)){ show_debug_message("menu prev tab"); }
+if(!is_undefined(menu_scroll_up)){ show_debug_message("menu scroll up"); }
+if(!is_undefined(menu_scroll_down)){ show_debug_message("menu scroll down"); }
+if(!is_undefined(menu_open_command)){
+	show_debug_message("menu open command");
+	instance_create_depth(0,0,UPPERDEPTH,menu_open_command.value);
+}
 if(!is_undefined(menu_close_command))
 {
+	show_debug_message("menu close command");
 	if(ds_stack_size(menu_stack) == 0){} else {
 		var _menu = ds_stack_top(menu_stack);
 		if(_menu.closable){

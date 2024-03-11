@@ -4,13 +4,14 @@
   "eventList":[
     {"$GMEvent":"","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":1,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
   "name":"oUpgradeMenu",
   "overriddenProperties":[],
   "parent":{
-    "name":"Menus",
-    "path":"folders/Objects/Menus.yy",
+    "name":"Upgrade Menu",
+    "path":"folders/Objects/Menus/Upgrade Menu.yy",
   },
   "parentObjectId":{
     "name":"pMenu",
