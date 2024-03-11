@@ -4,8 +4,6 @@ Fighter = function(_hp, _strength, _defense, _speed, _range, _xp, _basic_attack=
 	xp_next_level = 1000000000;
 	hp = _hp;
     hp_max = _hp;
-    sanity = 100;
-	sanity_max = 100;
 	foraging = 1;
 	strength = _strength;
 	defense = _defense;
@@ -13,7 +11,6 @@ Fighter = function(_hp, _strength, _defense, _speed, _range, _xp, _basic_attack=
     range = _range;
 	death_object = -1;
 	enemies_in_range = ds_list_create();
-	
 
 	kill_count = 0;
 	fight_behavior = -1;

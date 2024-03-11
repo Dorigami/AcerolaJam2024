@@ -21,7 +21,25 @@ function InstantiatePlayerComponents(_health,_strength,_defense,_speed,_range,_x
 	fighter = new global.i_engine.Fighter(_health,_strength,_defense,_speed,_range,_xp,_basic,_active,id);
 	ai = new global.i_engine.PlayerAI(DEFENSIVE, id);
 	inventory = new global.i_engine.Inventory(id);
+
+// upgrade variables
+	hp_upgrades = 0;
+	strength_upgrades = 0;
+	defense_upgrades = 0;
+	speed_upgrades = 0;
+	range_upgrades = 0;
 	
+	hp_upgrades_cap = 0;
+	strength_upgrades_cap = 0;
+	defense_upgrades_cap = 0;
+	speed_upgrades_cap = 0;
+	range_upgrades_cap = 0;
+	
+	hp_upgrades_val = 10;
+	strength_upgrades_val = 1;
+	defense_upgrades_val = 1;
+	speed_upgrades_val = 1;
+	range_upgrades_val = 1;
 }
 function InstantiateBushComponents(_health,_strength,_defense,_speed,_range,_xp){
 	// determine the attacks

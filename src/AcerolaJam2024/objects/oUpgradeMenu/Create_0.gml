@@ -36,7 +36,7 @@ ButtonAdd(0,0,id,++_ind,"f1_decrease",s_menu_minus,undefined,"",undefined,AddFlo
 LabelAdd(0,0,id,++_ind,"f1_icon")
 ButtonAdd(0,0,id,++_ind,"f1_increase",s_menu_plus,undefined,"",undefined,AddFlowers,[1,0,0,0]);
 ButtonAdd(0,0,id,++_ind,"f1_decrease",s_menu_minus,undefined,"",undefined,AddFlowers,[-1,0,0,0]);
-// flwoer 4 ui elements
+// flower 4 ui elements
 LabelAdd(0,0,id,++_ind,"f1_icon")
 ButtonAdd(0,0,id,++_ind,"f1_increase",s_menu_plus,undefined,"",undefined,AddFlowers,[1,0,0,0]);
 ButtonAdd(0,0,id,++_ind,"f1_decrease",s_menu_minus,undefined,"",undefined,AddFlowers,[-1,0,0,0]);
@@ -45,4 +45,8 @@ ButtonAdd(0,0,id,++_ind,"commit craft");
 
 show_debug_message("menu create");
 
-
+	hp_cap = 200;
+	strength_cap = 10;
+	defense_cap = 10;
+	speed_cap = 10;
+	range_cap = 2;

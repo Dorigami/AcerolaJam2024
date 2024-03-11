@@ -35,14 +35,19 @@ of mana flower in the wilds.  regardless of the circumstance, the energy from th
 with the others.  surely this represents progress!  
 --------------------------------------------------------------
 --------------------------------------------------------------
+	invigorating foraging: acquiring flowers will heal based on the rarity
+	harmonius foraging: foraging enemies wont aggro when you take nearby flowers
 	foraging knowledge III: reduced forage difficulty for #4 flowers
 	stealth training: reduces aggro range for aggressive enemies by 1
+	slowing strikes: each attack will reduce enemy's speed for a short time
+	lifesteal I: killing enemies heals a small amount
 
 lEVEL #4: FLOWER ACCESS [#1 #2 #3 #4 #5]
 the final strain of mana flower has taken root in the wilds, I must collect three of them in order to 
 complete the elixer recipe!  however, it seems some of the fauna have beat me to it
 --------------------------------------------------------------
 --------------------------------------------------------------
-
+	master foraging: forage any flower with ease
+	lifesteal II: killing enemies restores more health
 
 Elixer! (you win when this is obtained)		
