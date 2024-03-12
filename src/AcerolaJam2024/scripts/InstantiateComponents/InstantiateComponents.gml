@@ -23,6 +23,7 @@ function InstantiatePlayerComponents(_health,_strength,_defense,_speed,_range,_x
 	inventory = new global.i_engine.Inventory(id);
 
 // upgrade variables
+	total_upgrade_count = 0;
 	hp_upgrades = 0;
 	strength_upgrades = 0;
 	defense_upgrades = 0;
