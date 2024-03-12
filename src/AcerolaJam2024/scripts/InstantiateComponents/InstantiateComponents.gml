@@ -41,6 +41,17 @@ function InstantiatePlayerComponents(_health,_strength,_defense,_speed,_range,_x
 	defense_upgrades_val = 1;
 	speed_upgrades_val = 1;
 	range_upgrades_val = 1;
+	progression = {
+		t1_unlock : true, 
+		t1_1 : false, t1_2 : false,
+		t2_unlock : false,
+		t2_1 : false,t2_2 : false,t2_3 : false,t2_4 : false,
+		t3_unlock : false,
+		t3_1 : false,t3_2 : false,t3_3 : false,t3_4 : false,t3_5 : false,t3_6 : false,
+		t4_unlock : false,
+		t4_1 : false,t4_2 : false,
+		t5_unlock : false,
+	}
 }
 function InstantiateBushComponents(_health,_strength,_defense,_speed,_range,_xp){
 	// determine the attacks

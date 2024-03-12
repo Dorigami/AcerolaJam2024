@@ -1,9 +1,4 @@
 
-		
-
-
-		
-		
 
 LEVEL #1: FLOWER ACCESS [#1 #2]
 base level of the player.  Nothing seems odd yet. you must collect flower samples for your research 

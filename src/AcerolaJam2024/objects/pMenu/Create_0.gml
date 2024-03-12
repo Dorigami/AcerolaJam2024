@@ -326,4 +326,5 @@ closable = false;
 
 menuOpen = false;
 
+stack_index = ds_stack_size(global.i_engine.menu_stack);
 ds_stack_push(global.i_engine.menu_stack, id);
