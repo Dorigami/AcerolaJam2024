@@ -292,7 +292,7 @@ Label = function() constructor{
 	static Draw = function(){
 		if(!is_undefined(sprite)) draw_sprite(sprite, image, xTrue, yTrue);
 		draw_set_alpha(alpha);
-		draw_set_color(c_white);
+		draw_set_color(c_black);
 		draw_set_valign(fa_top);
 		draw_set_halign(fa_left);
 		draw_text(xTrue,yTrue, text);

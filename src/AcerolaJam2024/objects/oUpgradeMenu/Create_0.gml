@@ -7,17 +7,10 @@ UpgradeMenuFunctions();
 // Inherit the parent event
 event_inherited();
 
-gui_w = display_get_gui_width();
-gui_h = display_get_gui_height();
-
-
 xTo = global.i_camera.x;
 yTo = global.i_camera.y;
 x = xTo;
 y = yTo + global.i_camera.viewHeightHalf;
-
-gui = false;
-closable = true;
 
 // set scaling
 menu_9s = s_upgrade_menu_9s;
@@ -29,10 +22,9 @@ menu_yscale = menu_size[2] / sprite_get_height(s_upgrade_menu_9s);
 
 // Title
 var _ind = -1
-LabelAdd(0,0,id,++_ind,"title",undefined,"UPGRADE MENU");
 
-
-
+// next level button
+ButtonAdd(126,114,id,++_ind,"next_level",s_commit_button,undefined,"",undefined,UpgradeMenuStartNextLevel,[]);
 
 // nodes of the upgrade tree
 var _pos = vect2(0,0);
@@ -67,16 +59,17 @@ for(var i=0;i<19;i++)
 		// tier 5 upgrade
 		case 18: _pos = vect2(-96,-133); _name = "t5_unlock"; break;
 	}
-	ButtonAdd(_pos[1], _pos[2],id,++_ind,_name,s_upgrade_node_locked,undefined,"",undefined,AddFlowers,[1,1,1,1]);
+	ButtonAdd(_pos[1], _pos[2],id,++_ind,_name,s_upgrade_node_locked,undefined,"",undefined,NodeClickAction,[]);
 }
 progression_index_end = _ind;
-ts_progression_buy = time_source_create(time_source_global,2,time_source_units_seconds,GetUpgrade);
+ts_progression_buy = time_source_create(time_source_global,1,time_source_units_seconds,GetUpgrade);
 progression_clicked_index = progression_index_start;
 progression_buy_progress = 0;
 progression_focus_name = "";
-progression_target = undefined;
+progression_focus_title = "";
 progression_focus_text = "This is sample text for the progression/upgrade eplanation window.  Please use this to format the textbox to make is as pretty as can be!!!"
 player_flowers = global.i_player.inventory.flower_counts;
 required_flowers = [-1,-1,-1,-1,-1];
+flower_draw_positions = [vect2(0,0),vect2(0,0),vect2(0,0),vect2(0,0),vect2(0,0)];
 FocusProgressionNode();
 GetUpgrade();

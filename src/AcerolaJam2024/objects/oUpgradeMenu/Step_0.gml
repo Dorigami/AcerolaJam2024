@@ -13,6 +13,13 @@ if(x != xTo) || (y != yTo)
 	} else {
 		x += 0.08*_xdiff; y += 0.08*_ydiff;
 	}
+	// update draw positions for flower count
+	flower_draw_positions = [
+		vect2(x+107,y+80),
+		vect2(x+132,y+80),
+		vect2(x+157,y+80),
+		vect2(x+182,y+80),
+		vect2(x+207,y+80)];
 }
 
 // check if any of the upgrade nodes is beeing held down by player

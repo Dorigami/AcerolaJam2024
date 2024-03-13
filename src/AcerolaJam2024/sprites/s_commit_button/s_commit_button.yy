@@ -21,6 +21,8 @@
   "height":32,
   "HTile":false,
   "layers":[
+    {"$GMImageLayer":"","%Name":"15c9a90a-458e-447d-b044-6586b18c00f3","blendMode":0,"displayName":"Layer 1","isLocked":false,"name":"15c9a90a-458e-447d-b044-6586b18c00f3","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
+    {"$GMImageLayer":"","%Name":"fd141a40-6e05-4fdd-b7dc-7ed97ec6c31c","blendMode":0,"displayName":"Layer 2","isLocked":false,"name":"fd141a40-6e05-4fdd-b7dc-7ed97ec6c31c","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":false,},
     {"$GMImageLayer":"","%Name":"f8d01fff-10e5-4ce9-a091-a8099934856f","blendMode":0,"displayName":"default","isLocked":false,"name":"f8d01fff-10e5-4ce9-a091-a8099934856f","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
   ],
   "name":"s_commit_button",

@@ -1,18 +1,18 @@
-function AddFlowers(count1, count2, count3, count4){
-	show_debug_message("add flowers: {0}", [count1, count2, count3, count4]);
-}
 function FocusProgressionNode(_controls_name="t1_unlock"){
 	with(oUpgradeMenu)
 	{
 		if(progression_focus_name == _controls_name) exit;
 		// remove highlight flag on old button
-		if(!is_undefined(controlsMap[? _controls_name]))
-		{ controlsList[| controlsMap[? _controls_name]].highlightForced = false; }
+		if(!is_undefined(controlsMap[?progression_focus_name]))
+		{ controlsList[| controlsMap[? progression_focus_name]].highlightForced = false; }
 		
 		// set values of new button
 		var btn = controlsList[| controlsMap[? _controls_name]];
 		btn.highlightForced = true;
 		progression_focus_name = btn.name;
+		progression_focus_title = global.i_player.progression[$ btn.name][2];
+		progression_focus_text = global.i_player.progression[$ btn.name][3];
+		required_flowers = global.i_player.progression[$ btn.name][1];
 	}
 }
 function GetFocusStatus(){
@@ -61,13 +61,8 @@ function CheckAffordability(){
 	}
 }
 
-function UpgradeNodeAction(){
-	if(progression_charge_time == progression_charge_timer)
-	{
-	} else {
-
-	}
-	show_debug_message("UpgradeNodeAction: stage 1");
+function NodeClickAction(){
+	
 }
 function GetUpgrade(){
 	with(oUpgradeMenu)
@@ -106,6 +101,7 @@ function PerformUpgrade(upg_name){
 		    break;
 		case "t2_unlock":
 		    UnlockNode(["t3_unlock","t2_1","t2_2","t2_3","t2_4"]);
+			global.i_player.inventory.flower_counts[2] = 10;
 		    break;
 		case "t2_1":
 		    //
@@ -121,6 +117,7 @@ function PerformUpgrade(upg_name){
 		    break;
 		case "t3_unlock":
 		    UnlockNode(["t4_unlock","t3_1","t3_2","t3_3","t3_4","t3_5","t3_6"]);
+			global.i_player.inventory.flower_counts[3] = 10;
 		    break;
 		case "t3_1":
 		    //
@@ -142,6 +139,7 @@ function PerformUpgrade(upg_name){
 		    break;
 		case "t4_unlock":
 		    UnlockNode(["t5_unlock","t4_1","t4_2"]);
+			global.i_player.inventory.flower_counts[4] = 10;
 		    break;
 		case "t4_1":
 		    //
@@ -164,4 +162,7 @@ function UnlockNode(names=[]){
 			btn.sprite = s_upgrade_node_available;	
 		}
 	}
+}
+function UpgradeMenuStartNextLevel(){
+	show_debug_message("upgrade menu start next level.");
 }
