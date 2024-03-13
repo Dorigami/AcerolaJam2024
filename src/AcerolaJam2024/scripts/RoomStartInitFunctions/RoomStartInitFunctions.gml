@@ -70,7 +70,8 @@ function room_start_init_camera(){
 	}
 }
 function room_start_init_hud(){
-	instance_create_depth(50,50,UPPERDEPTH,o_hud_player_healthbar);
-	instance_create_depth(50,90,UPPERDEPTH,o_hud_player_xpbar);
-	instance_create_depth(20,110,UPPERDEPTH,o_hud_player_inventory);
+	instance_create_depth(50,50, UPPERDEPTH+10,o_hud_player_healthbar);
+	instance_create_depth(20,110,UPPERDEPTH+10,o_hud_player_inventory);
+	instance_create_depth(20,110,UPPERDEPTH+10,o_hud_clock);
+	instance_create_depth(0 ,0,  UPPERDEPTH+10,o_hud_interactables);
 }

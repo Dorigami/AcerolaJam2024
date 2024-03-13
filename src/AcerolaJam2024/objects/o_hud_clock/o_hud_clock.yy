@@ -1,15 +1,17 @@
 {
   "$GMObject":"",
-  "%Name":"oSkillTreeNode",
+  "%Name":"o_hud_clock",
   "eventList":[
     {"$GMEvent":"","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":8,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"","%Name":"","collisionObjectId":null,"eventNum":2,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"oSkillTreeNode",
+  "name":"o_hud_clock",
   "overriddenProperties":[],
   "parent":{
-    "name":"Upgrade Menu",
-    "path":"folders/Objects/Menus/Upgrade Menu.yy",
+    "name":"HUD Elements",
+    "path":"folders/Objects/HUD Elements.yy",
   },
   "parentObjectId":null,
   "persistent":false,
@@ -29,10 +31,7 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":{
-    "name":"s_menu_button",
-    "path":"sprites/s_menu_button/s_menu_button.yy",
-  },
+  "spriteId":null,
   "spriteMaskId":null,
   "visible":true,
 }

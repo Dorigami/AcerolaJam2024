@@ -15,7 +15,6 @@ menu_open_command = action[$ "menu_open_command"];
 menu_close_command = action[$ "menu_close_command"];
 
 escape = action[$ "escape"];
-start_level = action[$ "start_level"];
 player_move_command = mouse_action[$ "player_move_command"];
 player_focus_command = mouse_action[$ "player_focus_command"];
 camera_pan = action[$ "camera_pan"];
@@ -91,12 +90,6 @@ if(_zoom > 0)
 		}
 	}
 }
-if(!is_undefined(start_level)){
-	with(oLevelManager)
-	{
-		LevelBegin(120,30,4);
-	}
-}	
 if(!is_undefined(escape)){
 	show_debug_message("ESCAPE ACTION")
 	switch(global.game_state)

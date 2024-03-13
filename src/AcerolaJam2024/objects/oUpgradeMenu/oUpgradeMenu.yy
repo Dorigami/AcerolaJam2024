@@ -10,8 +10,8 @@
   "name":"oUpgradeMenu",
   "overriddenProperties":[],
   "parent":{
-    "name":"Upgrade Menu",
-    "path":"folders/Objects/Menus/Upgrade Menu.yy",
+    "name":"Menus",
+    "path":"folders/Objects/Menus.yy",
   },
   "parentObjectId":{
     "name":"pMenu",

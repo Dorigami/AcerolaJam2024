@@ -16,6 +16,7 @@
 #macro PASSIVE 0
 #macro DEFENSIVE 1
 #macro AGGRESSIVE 2
+#macro FORAGING 3
 
 enum GameStates 
 {

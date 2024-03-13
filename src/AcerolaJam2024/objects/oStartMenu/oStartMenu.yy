@@ -11,8 +11,8 @@
   "name":"oStartMenu",
   "overriddenProperties":[],
   "parent":{
-    "name":"Start Menu",
-    "path":"folders/Objects/Menus/Start Menu.yy",
+    "name":"Menus",
+    "path":"folders/Objects/Menus.yy",
   },
   "parentObjectId":{
     "name":"pMenu",

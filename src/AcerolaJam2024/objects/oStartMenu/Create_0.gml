@@ -1,17 +1,28 @@
 /// @description 
 
-
+function Start(){
+	with(oLevelManager){ LevelBegin(120,30,4) }
+}
+function Tutorial(){}
+function QUIT(){
+	game_end();
+}
 
 alarm[0] = FRAME_RATE;
 
 // Inherit the parent event
 event_inherited();
 
+// general variables
 xTo = global.i_camera.x;
 yTo = global.i_camera.y;
 x = xTo;
 y = yTo + global.i_camera.viewHeightHalf;
-
+show_tutorial = false;
+tut_true_pos = vect2(0,0);
+tut_false_pos = vect2(0,0);
+tut_pos = tut_false_pos;
+tut = ""
 // set scaling
 menu_9s = s_upgrade_menu_9s;
 menu_size = vect2(480,336);

@@ -1,5 +1,7 @@
 /// @description 
 
+/*
+
 draw_set_font(f_default_L);
 draw_set_valign(fa_middle);
 draw_set_halign(fa_center);
