@@ -160,8 +160,10 @@ Inventory = function(_owner=noone) constructor{
 	flower2_name = "FLOWER 2";
 	flower3_name = "FLOWER 3";
 	flower4_name = "FLOWER 4";
+	flower5_name = "FLOWER 5";
 	flower1 = 0;
 	flower2 = 0;
-	flower3 = 0;
-	flower4 = 0;
+	flower3 = -1;
+	flower4 = -1;
+	flower5 = -1;
 }

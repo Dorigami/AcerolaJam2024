@@ -2,7 +2,7 @@
   "$GMSprite":"",
   "%Name":"sUpgradeMenuButtonPlacement",
   "bboxMode":0,
-  "bbox_bottom":321,
+  "bbox_bottom":314,
   "bbox_left":0,
   "bbox_right":474,
   "bbox_top":0,

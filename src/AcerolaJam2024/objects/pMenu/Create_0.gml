@@ -221,7 +221,7 @@ Button = function() constructor{
 		}
 	}
 	static Draw = function(){
-		var _alpha = enabled ? min(1, container.image_alpha) : min(0.5, container.image_alpha); 
+		var _alpha = enabled ? min(1, container.image_alpha) : min(1.0, container.image_alpha); 
 		draw_set_alpha(_alpha);
 		draw_set_color(color);
 		// draw button sprite

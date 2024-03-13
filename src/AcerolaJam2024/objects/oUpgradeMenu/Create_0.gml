@@ -37,6 +37,7 @@ LabelAdd(0,0,id,++_ind,"title",undefined,"UPGRADE MENU");
 // nodes of the upgrade tree
 var _pos = vect2(0,0);
 var _name = "";
+progression_index_start = _ind++;
 for(var i=0;i<19;i++)
 {
 	switch(i)
@@ -68,5 +69,12 @@ for(var i=0;i<19;i++)
 	}
 	ButtonAdd(_pos[1], _pos[2],id,++_ind,_name,s_upgrade_node,undefined,"",undefined,AddFlowers,[1,1,1,1]);
 }
-
-
+progression_index_end = _ind;
+progression_charge_time = 100;
+progression_charge_timer = -1;
+progression_charging = false;
+progression_target = undefined;
+progression_target_text = "This is sample text for the progression/upgrade eplanation window.  Please use this to format the textbox to make is as pretty as can be!!!"
+player_flowers = [-1,-1,-1,-1,-1];
+required_flowers = [-1,-1,-1,-1,-1];
+FocusProgressionNode(progression_index_start);

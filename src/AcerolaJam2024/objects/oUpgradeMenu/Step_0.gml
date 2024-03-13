@@ -15,6 +15,15 @@ if(x != xTo) || (y != yTo)
 	}
 }
 
+// check if any of the upgrade nodes is beeing held down by player
+GetChargingStatus();
+if(progression_charging)
+{
+	progression_charge_timer = min(progression_charge_timer++, progression_charge_time);
+	if(progression_charge_timer == progression_charge_time)
+}
+
+
 // Inherit the parent event
 event_inherited();
 
