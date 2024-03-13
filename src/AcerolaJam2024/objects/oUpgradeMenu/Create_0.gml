@@ -71,7 +71,7 @@ for(var i=0;i<19;i++)
 }
 progression_index_end = _ind;
 ts_progression_buy = time_source_create(time_source_global,2,time_source_units_seconds,GetUpgrade);
-progression_clicked_index = -1;
+progression_clicked_index = progression_index_start;
 progression_buy_progress = 0;
 progression_focus_name = "";
 progression_target = undefined;
@@ -79,4 +79,4 @@ progression_focus_text = "This is sample text for the progression/upgrade eplana
 player_flowers = global.i_player.inventory.flower_counts;
 required_flowers = [-1,-1,-1,-1,-1];
 FocusProgressionNode();
-CheckAffordability();
+GetUpgrade();
