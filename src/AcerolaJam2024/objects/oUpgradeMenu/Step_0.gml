@@ -16,12 +16,22 @@ if(x != xTo) || (y != yTo)
 }
 
 // check if any of the upgrade nodes is beeing held down by player
-GetChargingStatus();
-if(progression_charging)
-{
-	progression_charge_timer = min(progression_charge_timer++, progression_charge_time);
-	if(progression_charge_timer == progression_charge_time)
+progression_clicked_index = GetFocusStatus();
+if(progression_clicked_index > -1) && (mouse_check_button(mb_left)) && (controlsList[| progression_clicked_index].sprite == s_upgrade_node_available)
+{	// start counting down as the mouse if being held
+	if(time_source_get_state(ts_progression_buy) == time_source_state_initial) time_source_start(ts_progression_buy);
+} else {
+	// reset the time source when condition to buy is not met
+	if(time_source_get_state(ts_progression_buy) != time_source_state_initial)
+	{ 
+		time_source_reset(ts_progression_buy) ;
+		progression_buy_progress = 0;
+	}
 }
+if(time_source_get_state(ts_progression_buy) == time_source_state_active)
+{
+	progression_buy_progress = 100*(1-time_source_get_time_remaining(ts_progression_buy)/time_source_get_period(ts_progression_buy));
+} 
 
 
 // Inherit the parent event

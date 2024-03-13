@@ -37,44 +37,46 @@ LabelAdd(0,0,id,++_ind,"title",undefined,"UPGRADE MENU");
 // nodes of the upgrade tree
 var _pos = vect2(0,0);
 var _name = "";
-progression_index_start = _ind++;
+progression_index_start = _ind+1;
 for(var i=0;i<19;i++)
 {
 	switch(i)
 	{
 		// tier 1 upgrades
-		case 0: _pos = vect2(-97,113); _name = "t1_unlock"; break;
-		case 1: _pos = vect2(-152,93); _name = "t1_1"; break;
-		case 2: _pos = vect2(-42,93); _name = "t1_2"; break;
+		case 0: _pos = vect2(-96,114); _name = "t1_unlock"; break;
+		case 1: _pos = vect2(-151,94); _name = "t1_1"; break;
+		case 2: _pos = vect2(-41,94); _name = "t1_2"; break;
 		// tier 2 upgrades
-		case 3: _pos = vect2(-97,51); _name = "t2_unlock"; break;
-		case 4: _pos = vect2(-192,31); _name = "t2_1"; break;
-		case 5: _pos = vect2(-152,31); _name = "t2_2"; break;
-		case 6: _pos = vect2(-42,31); _name = "t2_3"; break;
-		case 7: _pos = vect2(-2,31); _name = "t2_4"; break;
+		case 3: _pos = vect2(-96,52); _name = "t2_unlock"; break;
+		case 4: _pos = vect2(-191,32); _name = "t2_1"; break;
+		case 5: _pos = vect2(-151,32); _name = "t2_2"; break;
+		case 6: _pos = vect2(-41,32); _name = "t2_3"; break;
+		case 7: _pos = vect2(-1,32); _name = "t2_4"; break;
 		// tier 3 upgrades
-		case 8: _pos = vect2(-97,-12); _name = "t3_unlock"; break;
-		case 9: _pos = vect2(-232,-32); _name = "t3_1"; break;
-		case 10: _pos = vect2(-192,-32); _name = "t3_2"; break;
-		case 11: _pos = vect2(-152,-32); _name = "t3_3"; break;
-		case 12: _pos = vect2(-42,-32); _name = "t3_4"; break;
-		case 13: _pos = vect2(-2,-32); _name = "t3_5"; break;
-		case 14: _pos = vect2(38,-32); _name = "t3_6"; break;
+		case 8: _pos = vect2(-96,-11); _name = "t3_unlock"; break;
+		case 9: _pos = vect2(-231,-31); _name = "t3_1"; break;
+		case 10: _pos = vect2(-191,-31); _name = "t3_2"; break;
+		case 11: _pos = vect2(-151,-31); _name = "t3_3"; break;
+		case 12: _pos = vect2(-41,-31); _name = "t3_4"; break;
+		case 13: _pos = vect2(-1,-31); _name = "t3_5"; break;
+		case 14: _pos = vect2(39,-31); _name = "t3_6"; break;
 		// tier 4 upgrades
-		case 15: _pos = vect2(-97,-73); _name = "t4_unlock"; break;
-		case 16: _pos = vect2(-152,-93); _name = "t4_1"; break;
-		case 17: _pos = vect2(-42,-93); _name = "t4_2"; break;
+		case 15: _pos = vect2(-96,-72); _name = "t4_unlock"; break;
+		case 16: _pos = vect2(-151,-92); _name = "t4_1"; break;
+		case 17: _pos = vect2(-41,-92); _name = "t4_2"; break;
 		// tier 5 upgrade
-		case 18: _pos = vect2(-97,-134); _name = "t5_unlock"; break;
+		case 18: _pos = vect2(-96,-133); _name = "t5_unlock"; break;
 	}
-	ButtonAdd(_pos[1], _pos[2],id,++_ind,_name,s_upgrade_node,undefined,"",undefined,AddFlowers,[1,1,1,1]);
+	ButtonAdd(_pos[1], _pos[2],id,++_ind,_name,s_upgrade_node_locked,undefined,"",undefined,AddFlowers,[1,1,1,1]);
 }
 progression_index_end = _ind;
-progression_charge_time = 100;
-progression_charge_timer = -1;
-progression_charging = false;
+ts_progression_buy = time_source_create(time_source_global,2,time_source_units_seconds,GetUpgrade);
+progression_clicked_index = -1;
+progression_buy_progress = 0;
+progression_focus_name = "";
 progression_target = undefined;
-progression_target_text = "This is sample text for the progression/upgrade eplanation window.  Please use this to format the textbox to make is as pretty as can be!!!"
-player_flowers = [-1,-1,-1,-1,-1];
+progression_focus_text = "This is sample text for the progression/upgrade eplanation window.  Please use this to format the textbox to make is as pretty as can be!!!"
+player_flowers = global.i_player.inventory.flower_counts;
 required_flowers = [-1,-1,-1,-1,-1];
-FocusProgressionNode(progression_index_start);
+FocusProgressionNode();
+CheckAffordability();
