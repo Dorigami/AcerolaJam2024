@@ -55,6 +55,7 @@
     {"name":"o_hud_player_staminabar","order":4,"path":"objects/o_hud_player_staminabar/o_hud_player_staminabar.yy",},
     {"name":"o_player_basic","order":2,"path":"objects/o_player_basic/o_player_basic.yy",},
     {"name":"oAggroIndicator","order":5,"path":"objects/oAggroIndicator/oAggroIndicator.yy",},
+    {"name":"o_player_movement","order":2,"path":"objects/o_player_movement/o_player_movement.yy",},
     {"name":"oBush","order":2,"path":"objects/oBush/oBush.yy",},
     {"name":"oCamera","order":2,"path":"objects/oCamera/oCamera.yy",},
     {"name":"oDeath","order":11,"path":"objects/oDeath/oDeath.yy",},

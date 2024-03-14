@@ -13,7 +13,7 @@ switch(trans_type)
 			// start level and
 			instance_destroy(creator);
 			instance_destroy();
-			StartCountdownToLevelStart(3, 60, 4, 6);
+			StartCountdownToLevelStart(3, 30, 4, 6);
 		}
 		break;
 }

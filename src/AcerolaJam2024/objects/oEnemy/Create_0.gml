@@ -62,7 +62,7 @@ switch(type_string)
 		var _s = {
 			hp : 3,	str : 1, def : 1,
 			spd : 2, rng : 0, xp : 100,
-			bhvr : DEFENSIVE,
+			bhvr : AGGRESSIVE,
 		}
 		break;
 	default:

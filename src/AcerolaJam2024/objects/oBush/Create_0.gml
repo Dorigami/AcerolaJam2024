@@ -14,58 +14,28 @@ flower_positions = [
 	vect2(x,y),
 ]
 // determine # of flowers based on player progression
-switch(global.i_player.perception_level)
-{
-	case 1:
-		foraging_charges = [irandom(3),irandom(3),0,0,0];
-		foraging_probs = [1.0,0.3,0,0,0];
-		foraging_threshold = 360*max(1.0*(foraging_charges[0] > 0),
-									1.15*(foraging_charges[1] > 0),
-									1.3*(foraging_charges[2] > 0),
-									1.45*(foraging_charges[3] > 0),
-									1.6*(foraging_charges[4] > 0)
-								    );
-		break;
-	case 2:
-		foraging_charges = [irandom(3),irandom(3),irandom(3),0,0];
-		foraging_probs = [1.0,0.4,0.2,0,0];
-		foraging_threshold = 360*max(1.0*(foraging_charges[0] > 0),
-									1.15*(foraging_charges[1] > 0),
-									1.3*(foraging_charges[2] > 0),
-									1.45*(foraging_charges[3] > 0),
-									1.6*(foraging_charges[4] > 0)
-								    );
-		break;
-	case 3:
-		foraging_charges = [irandom(3),irandom(3),irandom(3),irandom(3),0];
-		foraging_probs = [1.0,0.5,0.3,0.1,0];
-		foraging_threshold = 360*max(1.0*(foraging_charges[0] > 0),
-									1.15*(foraging_charges[1] > 0),
-									1.3*(foraging_charges[2] > 0),
-									1.45*(foraging_charges[3] > 0),
-									1.6*(foraging_charges[4] > 0)
-								    );
-		break;
-	case 4:
-		foraging_charges = [irandom(3),irandom(3),irandom(3),irandom(3),irandom(2)];
-		foraging_probs = [1.0,0.7,0.5,0.2,0.05];
-		foraging_threshold = 360*max(1.0*(foraging_charges[0] > 0),
-									1.15*(foraging_charges[1] > 0),
-									1.3*(foraging_charges[2] > 0),
-									1.45*(foraging_charges[3] > 0),
-									1.6*(foraging_charges[4] > 0)
-								    );
-		break;
-	default:
-		// do nothing
-		break;
-}
+var _lvl = global.i_player.perception_level;
+// get random quantities, refer to perception level on whether to give higher tier flowers
+foraging_charges = [irandom(3),irandom(3),irandom(3)*(_lvl > 1),irandom(3)*(_lvl > 2),irandom(3)*(_lvl > 3)];
 // make sure bush has at least 1 flower
 var _count = 0;
 for(var i=4;i>=0;i--){ if(foraging_charges[i] == 0) _count++ }
 if(_count == 5) 
 {	foraging_charges[0] = max(1, irandom(3)); foraging_charges[1] = max(1, irandom(3))}
-	
+// set foraging threshold
+foraging_threshold = 360*max(1.0*(foraging_charges[0] > 0),
+							1.15*(foraging_charges[1] > 0),
+							1.3*(foraging_charges[2] > 0),
+							1.45*(foraging_charges[3] > 0),
+							1.6*(foraging_charges[4] > 0));
+// set probabilities for each flower
+switch(_lvl) {
+	case 1: foraging_probs = [1.0,0.3,0,0,0]; break;
+	case 2: foraging_probs = [1.0,0.4,0.2,0,0]; break;
+	case 3: foraging_probs = [1.0,0.5,0.3,0.1,0]; break;
+	case 4: foraging_probs = [1.0,0.7,0.5,0.2,0.05]; break;
+}
+
 function CheckForPlayer(){
 	player_in_range = ds_list_find_index(fighter.enemies_in_range, global.i_player) > -1;
 	if(player_in_range) global.i_player.ai.foraging_id = id;
@@ -99,7 +69,7 @@ function ConsumeForagingCharge(){
 	{
 		if(foraging_charges[i] <= 0){ _rand++ }
 	}
-	if(_rand == 5){} //KillEntity(id);
+	if(_rand == 5) KillEntity(id);
 }
 
 // Inherit the parent event
