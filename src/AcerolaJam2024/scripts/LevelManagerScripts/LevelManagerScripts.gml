@@ -38,6 +38,8 @@ function LevelBegin(_level_time=120, _bush_interval=20, _enemy_interval=15){
 			time_source_start(ts_level_timer)
 			time_source_start(ts_bush_timer);
 			time_source_start(ts_enemy_timer);
+			
+			with(o_hud_interactables) time_source_started = true;
 		}
 	}
 }
@@ -75,6 +77,7 @@ function LevelComplete(){
 		time_source_stop(ts_bush_timer);
 		time_source_stop(ts_enemy_timer);
 	}
+	with(o_hud_interactables) time_source_complete = true;
 	instance_create_depth(0,0,UPPERDEPTH,oUpgradeMenu);
 }
 

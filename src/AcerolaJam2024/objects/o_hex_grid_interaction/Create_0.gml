@@ -1,5 +1,5 @@
 /// @description 
-
+if(!variable_instance_exists(id, "creator")) instance_destroy();
 
 tile_type_index = 0;
 

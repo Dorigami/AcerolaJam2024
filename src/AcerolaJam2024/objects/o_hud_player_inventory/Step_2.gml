@@ -5,7 +5,14 @@ bbox[1] = camera_get_view_y(view_camera[0]) + y;
 bbox[2] = bbox[0]+width;
 bbox[3] = bbox[1]+height;
 
-inventory_string = "INVENTORY\n";
+if(ds_stack_size(global.i_engine.menu_stack) == 0)
+{
+	if(image_alpha != 1) image_alpha = min(1, image_alpha+0.08);
+} else {
+	if(image_alpha != 0) image_alpha = 0;
+}
+
+inventory_string = "FLOWERS\n";
 inventory_string += p_inventory.flower_names[0] + " = " + string(p_inventory.flower_counts[0]) + "\n";
 if(p_inventory.flower_counts[1] != -1)
 {

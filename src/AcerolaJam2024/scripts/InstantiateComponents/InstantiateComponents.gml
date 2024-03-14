@@ -22,25 +22,8 @@ function InstantiatePlayerComponents(_health,_strength,_defense,_speed,_range,_x
 	ai = new global.i_engine.PlayerAI(DEFENSIVE, id);
 	inventory = new global.i_engine.Inventory(id);
 
-// upgrade variables
-	total_upgrade_count = 0;
-	hp_upgrades = 0;
-	strength_upgrades = 0;
-	defense_upgrades = 0;
-	speed_upgrades = 0;
-	range_upgrades = 0;
-	
-	hp_upgrades_cap = 0;
-	strength_upgrades_cap = 0;
-	defense_upgrades_cap = 0;
-	speed_upgrades_cap = 0;
-	range_upgrades_cap = 0;
-	
-	hp_upgrades_val = 10;
-	strength_upgrades_val = 1;
-	defense_upgrades_val = 1;
-	speed_upgrades_val = 1;
-	range_upgrades_val = 1;
+	// upgrade variables
+	perception_level = 1;
 	progression = {
 		t1_unlock : [true, [-1,-1,-1,-1,-1], "PERCEPTION LEVEL 1", "Sample Text"], 
 		t1_1 :      [false, [1,1,-1,-1,-1], "WAND DEVELOPMENT", "Sample Text"], 

@@ -47,6 +47,7 @@ function room_start_init_player_entity(){
 		hex = pixel_to_hex(position);
 		hex_prev = hex;
 	}
+	instance_create_depth()
 }
 function room_start_init_camera(){
 	// NOTE: the playspace must initialize prior to updating the camera
@@ -60,17 +61,20 @@ function room_start_init_camera(){
 		// set the bounds for camera movement
 		array_copy(cam_bounds, 0, global.playpace, 0, 4);
 		// adjust internal variables
-		follow = noone; //instance_exists(global.i_player) ? global.i_player : noone;
+		follow = instance_exists(global.i_player) ? global.i_player : noone;
 		viewWidthHalf = round(0.5*camera_get_view_width(cam));
 		viewHeightHalf = round(0.5*camera_get_view_height(cam));
 
 		// set initial position of camera
-		xTo = (cam_bounds[0]+cam_bounds[2]) div 2; x = xTo;
-		yTo = (cam_bounds[1]+cam_bounds[3]) div 2; y = yTo;
+		xTo = follow == noone ? (cam_bounds[0]+cam_bounds[2]) div 2 : follow.xTo; 
+		yTo = follow == noone ? (cam_bounds[1]+cam_bounds[3]) div 2 : follow.yTo; 
+		x = xTo;
+		y = yTo;
 	}
 }
 function room_start_init_hud(){
-	instance_create_depth(50,50, UPPERDEPTH+10,o_hud_player_healthbar);
+	instance_create_depth(56,50, UPPERDEPTH+10,o_hud_player_healthbar);
+	instance_create_depth(56,70, UPPERDEPTH+10,o_hud_player_staminabar);
 	instance_create_depth(20,110,UPPERDEPTH+10,o_hud_player_inventory);
 	instance_create_depth(20,110,UPPERDEPTH+10,o_hud_clock);
 	instance_create_depth(0 ,0,  UPPERDEPTH+10,o_hud_interactables);

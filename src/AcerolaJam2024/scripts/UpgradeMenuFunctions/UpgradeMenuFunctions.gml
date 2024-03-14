@@ -101,7 +101,8 @@ function PerformUpgrade(upg_name){
 		    break;
 		case "t2_unlock":
 		    UnlockNode(["t3_unlock","t2_1","t2_2","t2_3","t2_4"]);
-			global.i_player.inventory.flower_counts[2] = 10;
+			global.i_player.inventory.flower_counts[2] = 0;
+			global.i_player.perception_level++;
 		    break;
 		case "t2_1":
 		    //
@@ -117,7 +118,8 @@ function PerformUpgrade(upg_name){
 		    break;
 		case "t3_unlock":
 		    UnlockNode(["t4_unlock","t3_1","t3_2","t3_3","t3_4","t3_5","t3_6"]);
-			global.i_player.inventory.flower_counts[3] = 10;
+			global.i_player.inventory.flower_counts[3] = 0;
+			global.i_player.perception_level++;
 		    break;
 		case "t3_1":
 		    //
@@ -139,7 +141,8 @@ function PerformUpgrade(upg_name){
 		    break;
 		case "t4_unlock":
 		    UnlockNode(["t5_unlock","t4_1","t4_2"]);
-			global.i_player.inventory.flower_counts[4] = 10;
+			global.i_player.inventory.flower_counts[4] = 0;
+			global.i_player.perception_level++;
 		    break;
 		case "t4_1":
 		    //

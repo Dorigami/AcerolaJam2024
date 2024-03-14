@@ -23,6 +23,41 @@ sound_death = asset_get_index("snd_"+type_string+"_death") == -1 ? snd_empty: as
 
 switch(type_string)
 {
+	case "sheep":
+		var _s = {
+			hp : 3,	str : 1, def : 1,
+			spd : 1, rng : 0, xp : 100,
+			bhvr : PASSIVE,
+		}
+		break;
+	case "yak":
+		var _s = {
+			hp : 7,	str : 1, def : 1,
+			spd : 1, rng : 0, xp : 100,
+			bhvr : DEFENSIVE,
+		}
+		break;
+	case "wolf":
+		var _s = {
+			hp : 3,	str : 1, def : 1,
+			spd : 2, rng : 0, xp : 100,
+			bhvr : AGGRESSIVE,
+		}
+		break;
+	case "warg":
+		var _s = {
+			hp : 4,	str : 2, def : 1,
+			spd : 3, rng : 0, xp : 100,
+			bhvr : AGGRESSIVE,
+		}
+		break;
+	case "werewolf":
+		var _s = {
+			hp : 10, str : 3, def : 1,
+			spd : 3, rng : 0, xp : 100,
+			bhvr : AGGRESSIVE,
+		}
+		break;
 	case "gen_enemy":
 		var _s = {
 			hp : 3,	str : 1, def : 1,

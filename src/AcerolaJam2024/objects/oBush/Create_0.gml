@@ -1,28 +1,105 @@
 /// @description 
 
+var _rad = 6;
+var _squish = 0.8;
 player_in_range = false;
 foraging_progress = 0;
 foraging_threshold = 60;
-foraging_charges = 10;
-foraging_probs = [1.0,0.6,0.4,0.2];
+flower_angles = [irandom(360),irandom(360),irandom(360),irandom(360),irandom(360)];
+flower_positions = [
+	vect2(x+lengthdir_x(_rad,135),y+_squish*lengthdir_y(_rad,135)),
+	vect2(x+lengthdir_x(_rad,45),y+_squish*lengthdir_y(_rad,45)),
+	vect2(x+lengthdir_x(_rad,225),y+_squish*lengthdir_y(_rad,225)),
+	vect2(x+lengthdir_x(_rad,315),y+_squish*lengthdir_y(_rad,315)),
+	vect2(x,y),
+]
+// determine # of flowers based on player progression
+switch(global.i_player.perception_level)
+{
+	case 1:
+		foraging_charges = [irandom(3),irandom(3),0,0,0];
+		foraging_probs = [1.0,0.3,0,0,0];
+		foraging_threshold = 360*max(1.0*(foraging_charges[0] > 0),
+									1.15*(foraging_charges[1] > 0),
+									1.3*(foraging_charges[2] > 0),
+									1.45*(foraging_charges[3] > 0),
+									1.6*(foraging_charges[4] > 0)
+								    );
+		break;
+	case 2:
+		foraging_charges = [irandom(3),irandom(3),irandom(3),0,0];
+		foraging_probs = [1.0,0.4,0.2,0,0];
+		foraging_threshold = 360*max(1.0*(foraging_charges[0] > 0),
+									1.15*(foraging_charges[1] > 0),
+									1.3*(foraging_charges[2] > 0),
+									1.45*(foraging_charges[3] > 0),
+									1.6*(foraging_charges[4] > 0)
+								    );
+		break;
+	case 3:
+		foraging_charges = [irandom(3),irandom(3),irandom(3),irandom(3),0];
+		foraging_probs = [1.0,0.5,0.3,0.1,0];
+		foraging_threshold = 360*max(1.0*(foraging_charges[0] > 0),
+									1.15*(foraging_charges[1] > 0),
+									1.3*(foraging_charges[2] > 0),
+									1.45*(foraging_charges[3] > 0),
+									1.6*(foraging_charges[4] > 0)
+								    );
+		break;
+	case 4:
+		foraging_charges = [irandom(3),irandom(3),irandom(3),irandom(3),irandom(2)];
+		foraging_probs = [1.0,0.7,0.5,0.2,0.05];
+		foraging_threshold = 360*max(1.0*(foraging_charges[0] > 0),
+									1.15*(foraging_charges[1] > 0),
+									1.3*(foraging_charges[2] > 0),
+									1.45*(foraging_charges[3] > 0),
+									1.6*(foraging_charges[4] > 0)
+								    );
+		break;
+	default:
+		// do nothing
+		break;
+}
+// make sure bush has at least 1 flower
+var _count = 0;
+for(var i=4;i>=0;i--){ if(foraging_charges[i] == 0) _count++ }
+if(_count == 5) 
+{	foraging_charges[0] = max(1, irandom(3)); foraging_charges[1] = max(1, irandom(3))}
+	
 function CheckForPlayer(){
 	player_in_range = ds_list_find_index(fighter.enemies_in_range, global.i_player) > -1;
 	if(player_in_range) global.i_player.ai.foraging_id = id;
 }
-function ConsumeForagingCharge(){
-	foraging_charges--;
-	foraging_progress = 0;
-	foraging_threshold *= 1.1;
-	var _rand = random(1);
-	if(_rand < foraging_probs[3]){
-		global.i_player.inventory.flower4++;
-	} else if(_rand < foraging_probs[2]){
-		global.i_player.inventory.flower3++;
-	} else if(_rand < foraging_probs[1]){
-		global.i_player.inventory.flower2++;
-	} else {
-		global.i_player.inventory.flower1++;
+function GetValidFlowerIndex(_start){
+	// returns the index of the closest flower stack that still has charges
+	var num = _start;
+	for(var i=0;i<5;i++)
+	{
+		//show_debug_message("mod math:  start={0}, i={1}, num={2}",_start,i,(_start-i) % 5);
+		num = _start-i;
+		if(num < 0) num += 5;
+		if(foraging_charges[num] > 0) return num;
 	}
+}
+function ConsumeForagingCharge(){
+	foraging_progress = 0;
+	var _rand = random(1);
+	for(var i=4;i>=0;i--)
+	{
+		if(_rand < foraging_probs[i]){
+			var _ind = GetValidFlowerIndex(i);
+			global.i_player.inventory.flower_counts[_ind] = global.i_player.inventory.flower_counts[_ind]+1;
+			foraging_charges[_ind] = foraging_charges[_ind]-1;
+			break;
+		}
+	}
+	// see if all charges have been used
+	_rand = 0;
+	for(var i=0;i<5;i++)
+	{
+		if(foraging_charges[i] <= 0){ _rand++ }
+	}
+	if(_rand == 5) KillEntity(id);
 }
 
 // Inherit the parent event
@@ -46,3 +123,5 @@ movement_script = BushMovement;
 col_ignored = true;
 
 InstantiateBushComponents(10,1,1,0,0,10);
+
+

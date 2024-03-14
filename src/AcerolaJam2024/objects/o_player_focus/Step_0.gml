@@ -1,0 +1,10 @@
+/// @description 
+target = global.i_player.ai.focus_target;
+if(target == noone) || (instance_exists(target))
+{
+	if(visible) visible = false;
+} else {
+	if(!visible) visible = true;
+	x = target.position[1];
+	y = target.position[2];
+}

@@ -9,7 +9,7 @@
   "bitRate":128,
   "compression":0,
   "conversionMode":0,
-  "duration":2.666667,
+  "duration":2.0,
   "name":"snd_player_death",
   "parent":{
     "name":"Player",

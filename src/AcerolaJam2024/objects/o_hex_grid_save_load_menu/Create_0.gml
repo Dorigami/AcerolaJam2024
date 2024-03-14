@@ -27,7 +27,7 @@ function update_options(){
 	}
 }
 
-hexmap_directory = working_directory + "/hexhashtables/"
+hexmap_directory = working_directory + "/hexhashtables/";
 mouse_gui_x = device_mouse_x_to_gui(0);
 mouse_gui_y = device_mouse_y_to_gui(0);
 gui_width = display_get_gui_width();

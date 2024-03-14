@@ -18,7 +18,8 @@ function Move(_direction){
 		yTo = _point[2];
 	}	
 	// set move cooldown timer
-	move_timer = max(10, FRAME_RATE*((21-fighter.speed)/20));
+	move_timer_set_point = max(10, FRAME_RATE*((21-fighter.speed)/20));
+	move_timer = move_timer_set_point;
 }
 
 function Update(){
@@ -142,6 +143,7 @@ movement_script = EntityMovement;
 // misc variables 
 name = "";
 attack_direction = 0;
+move_timer_set_point = 100;
 move_timer = -1;
 collision_radius = 10;
 col_moveable = true;

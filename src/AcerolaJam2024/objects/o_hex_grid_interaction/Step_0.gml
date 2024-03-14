@@ -1,4 +1,4 @@
-/// @description 
+/// @description
 
 if(keyboard_check_pressed(hotkey_saveload)){
 	var _exists = instance_exists(o_hex_grid_save_load_menu);

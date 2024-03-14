@@ -20,7 +20,6 @@ color6 = make_colour_rgb(255,212,163);
 color7 = make_colour_rgb(255,236,214);
 
 
-
 HexFunctions();	
 MACROS();
 STRUCTS();

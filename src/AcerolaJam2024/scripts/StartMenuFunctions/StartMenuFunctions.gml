@@ -1,5 +1,9 @@
-// Script assets have changed for v2.3.0 see
-// https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
-function StartMenuFunctions(){
-
+function Start(){
+	instance_create_depth(0,0,UPPERDEPTH,oStartMenuTransition);
+}
+function Tutorial(){
+	with(oStartMenu){show_tutorial = !show_tutorial}
+}
+function Quit(){
+	game_end();
 }
