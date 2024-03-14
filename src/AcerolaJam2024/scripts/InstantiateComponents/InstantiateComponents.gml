@@ -45,6 +45,8 @@ function InstantiatePlayerComponents(_health,_strength,_defense,_speed,_range,_x
 		t4_2 :      [false, [5,5,1,1,-1],"t4_2","Sample Text"],
 		t4_unlock : [false, [3,3,3,3,3],"THE ELIXER","This is the conclusion of the research.  With this, eternal life is mine to take!\n [This is the win condition]"],
 	}
+	//create the movement indicator
+	instance_create_depth(x,y,ENTITYDEPTH,o_player_movement,{p : id});
 }
 function InstantiateBushComponents(_health,_strength,_defense,_speed,_range,_xp){
 	// determine the attacks

@@ -1,6 +1,6 @@
 /// @description 
 
-var _rad = 6;
+var _rad = 8;
 var _squish = 0.8;
 player_in_range = false;
 foraging_progress = 0;

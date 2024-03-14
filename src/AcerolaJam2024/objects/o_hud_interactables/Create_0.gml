@@ -37,8 +37,10 @@ var _ind = -1;
 // foraging button (set player behavior to foraging)
 ButtonAdd(-(sprite_get_width(s_hud_foraging) div 2),0,id,++_ind,"forage",s_hud_foraging,,"",,SetPlayerBehavior,[FORAGING]);
 // fighting button (set player behavior to fighting)
-ButtonAdd(40-(sprite_get_width(s_hud_fighting) div 2),0,id,++_ind,"forage",s_hud_fighting,,"",,SetPlayerBehavior,[AGGRESSIVE]);
+ButtonAdd(40-(sprite_get_width(s_hud_fighting) div 2),0,id,++_ind,"fight",s_hud_fighting,,"",,SetPlayerBehavior,[AGGRESSIVE]);
 // button to end a level and bring up the reserch menu
 ButtonAdd(finish_hidepos[1],finish_hidepos[2],id,++_ind,"finish",s_hud_finish,,"",,FinishLevel,[]);
-
+// pause button (top-right corner)
+ButtonAdd(finish_hidepos[1],finish_hidepos[2],id,++_ind,"finish",s_hud_finish,,"",,FinishLevel,[]);
 SetPlayerBehavior(FORAGING);
+

@@ -278,11 +278,11 @@ function calc_hex_corner(center, i){
 
 //--// direction & neighbors
 function axial_direction(_ind){
-	return axial_direction_vectors[_ind];
+	with(global.i_hex_grid) return axial_direction_vectors[_ind];
 }
 
 function axial_neighbor(hex_vect, dir_index){
-	return vect_add(hex_vect, axial_direction_vectors[dir_index]);
+	with(global.i_hex_grid) return vect_add(hex_vect, axial_direction_vectors[dir_index]);
 }
 
 
