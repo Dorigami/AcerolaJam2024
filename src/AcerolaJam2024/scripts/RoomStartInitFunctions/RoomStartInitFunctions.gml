@@ -73,9 +73,11 @@ function room_start_init_camera(){
 	}
 }
 function room_start_init_hud(){
-	instance_create_depth(56,50, UPPERDEPTH+10,o_hud_player_healthbar);
-	instance_create_depth(56,70, UPPERDEPTH+10,o_hud_player_staminabar);
-	instance_create_depth(20,110,UPPERDEPTH+10,o_hud_player_inventory);
-	instance_create_depth(20,110,UPPERDEPTH+10,o_hud_clock);
-	instance_create_depth(0 ,0,  UPPERDEPTH+10,o_hud_interactables);
+	var _wHalf = global.i_camera.viewWidthHalf;
+	var _hHalf = global.i_camera.viewHeightHalf;
+	instance_create_depth(0.16*_wHalf,1.8*_hHalf, UPPERDEPTH+10,o_hud_player_healthbar);
+	instance_create_depth(0.16*_wHalf,1.9*_hHalf, UPPERDEPTH+10,o_hud_player_staminabar);
+	instance_create_depth(0.16*_wHalf,1.7*_hHalf, UPPERDEPTH+10,o_hud_player_inventory);
+	instance_create_depth(0.4*_wHalf,1.8*_hHalf, UPPERDEPTH+10,o_hud_interactables);
+	instance_create_depth(_wHalf,0.1*_hHalf,UPPERDEPTH+10,o_hud_clock);
 }

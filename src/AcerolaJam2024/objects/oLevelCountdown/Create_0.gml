@@ -1,7 +1,7 @@
 /// @description 
 
 function UpdateFloatPos(){
-	float_pos = vect2(global.i_camera.x,global.i_camera.y);
+	float_pos = vect2(global.i_camera.xTo,global.i_camera.yTo);
 }
 function CountdownFloat(){
 	with(oLevelCountdown)
@@ -22,6 +22,8 @@ function CountdownFinish(){
 }
 
 
+title = "Outing #";
+with(oLevelManager) other.title += string(level_index+1);
 
 ts_floatnumbers = time_source_create(time_source_global,1,time_source_units_seconds,CountdownFloat,[],seconds);
 ts_countdown = time_source_create(time_source_global,seconds,time_source_units_seconds,CountdownFinish,);

@@ -100,19 +100,6 @@ function handle_keys(game_state){
 }
 
 function handle_play_keys(){
-
-	if(keyboard_check_pressed(ord("I")))
-	{
-		if(!instance_exists(oUpgradeMenu))
-		{	// open the menu
-			return {menu_open_command : new Command("menu_open",oUpgradeMenu,0,0)}
-		}
-	}
-	// start the level 
-	if(keyboard_check_pressed(vk_enter))
-	{
-		return {start_level : new Command("start_level",true,0,0)}
-	}
     // pause
     if(keyboard_check_pressed(vk_escape))
     {

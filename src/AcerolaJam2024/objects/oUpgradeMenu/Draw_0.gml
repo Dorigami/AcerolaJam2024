@@ -5,9 +5,10 @@ draw_set_color(c_black);
 draw_set_font(f_default_L);
 draw_set_halign(fa_center);
 draw_set_valign(fa_middle);
+draw_set_alpha(image_alpha);
 
 // draw the background fade
-draw_sprite_ext(s_bg_fade,0,xTo,yTo,1.5,1.5,0,c_white,global.bg_fade);
+draw_sprite_ext(s_bg_fade,0,xTo,yTo,1.5,1.5,0,c_white,min(global.bg_fade, image_alpha));
 
 // draw the base of the menu
 var _x = x-menu_half_w;

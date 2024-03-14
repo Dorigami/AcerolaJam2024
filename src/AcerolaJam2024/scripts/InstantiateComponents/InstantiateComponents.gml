@@ -25,25 +25,25 @@ function InstantiatePlayerComponents(_health,_strength,_defense,_speed,_range,_x
 	// upgrade variables
 	perception_level = 1;
 	progression = {
-		t1_unlock : [true, [-1,-1,-1,-1,-1], "PERCEPTION LEVEL 1", "Sample Text"], 
+		t0_unlock : [true, [-1,-1,-1,-1,-1], "PERCEPTION LEVEL 1", "Sample Text"], 
 		t1_1 :      [false, [1,1,-1,-1,-1], "WAND DEVELOPMENT", "Sample Text"], 
 		t1_2 :      [false, [1,1,-1,-1,-1],"t1_2","Sample Text"],
-		t2_unlock : [false, [1,1,-1,-1,-1],"PERCEPTION LEVEL 2","Sample Text"],
+		t1_unlock : [false, [1,1,-1,-1,-1],"PERCEPTION LEVEL 2","Sample Text"],
 		t2_1 :      [false, [1,1,1,-1,-1],"t2_1","Sample Text"],
 		t2_2 :      [false, [1,1,1,-1,-1],"t2_2","Sample Text"],
 		t2_3 :      [false, [1,1,1,-1,-1],"t2_3","Sample Text"],
 		t2_4 :      [false, [2,2,2,-1,-1],"t2_4","Sample Text"],
-		t3_unlock : [false, [1,1,1,-1,-1],"PERCEPTION LEVEL 3","Sample Text"],
+		t2_unlock : [false, [1,1,1,-1,-1],"PERCEPTION LEVEL 3","Sample Text"],
 		t3_1 :      [false, [2,1,1,1,-1],"t3_1","Sample Text"],
 		t3_2 :      [false, [1,1,1,1,-1],"t3_2","Sample Text"],
 		t3_3 :      [false, [1,2,1,2,-1],"t3_3","Sample Text"],
 		t3_4 :      [false, [1,1,1,5,-1],"t3_4","Sample Text"],
 		t3_5 :      [false, [1,1,1,1,-1],"t3_5","Sample Text"],
 		t3_6 :      [false, [4,1,4,1,-1],"t3_6","Sample Text"],
-		t4_unlock : [false, [1,1,1,1,-1],"PERCEPTION LEVEL 4","Sample Text"],
+		t3_unlock : [false, [1,1,1,1,-1],"PERCEPTION LEVEL 4","Sample Text"],
 		t4_1 :      [false, [1,1,5,5,-1],"t4_1","Sample Text"],
 		t4_2 :      [false, [5,5,1,1,-1],"t4_2","Sample Text"],
-		t5_unlock : [false, [3,3,3,3,3],"THE ELIXER","This is the conclusion of the research.  With this, eternal life is mine to take!\n [This is the win condition]"],
+		t4_unlock : [false, [3,3,3,3,3],"THE ELIXER","This is the conclusion of the research.  With this, eternal life is mine to take!\n [This is the win condition]"],
 	}
 }
 function InstantiateBushComponents(_health,_strength,_defense,_speed,_range,_xp){

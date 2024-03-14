@@ -68,7 +68,7 @@ function GetUpgrade(){
 	with(oUpgradeMenu)
 	{
 		var btn = controlsList[| progression_clicked_index];
-		if(!is_undefined(btn))
+		if(!is_undefined(btn)) && (btn.sprite != s_upgrade_node_bought)
 		{
 			// update sprite
 			btn.sprite = s_upgrade_node_bought;
@@ -90,8 +90,8 @@ function PerformUpgrade(upg_name){
 	// facilitate the upgrade
 	switch(upg_name)
 	{
-		case "t1_unlock":
-		    UnlockNode(["t2_unlock","t1_1","t1_2"]);
+		case "t0_unlock":
+		    UnlockNode(["t1_unlock","t1_1","t1_2"]);
 		    break;
 		case "t1_1":
 		    //
@@ -99,8 +99,8 @@ function PerformUpgrade(upg_name){
 		case "t1_2":
 		    //
 		    break;
-		case "t2_unlock":
-		    UnlockNode(["t3_unlock","t2_1","t2_2","t2_3","t2_4"]);
+		case "t1_unlock":
+		    UnlockNode(["t2_unlock","t2_1","t2_2","t2_3","t2_4"]);
 			global.i_player.inventory.flower_counts[2] = 0;
 			global.i_player.perception_level++;
 		    break;
@@ -116,8 +116,8 @@ function PerformUpgrade(upg_name){
 		case "t2_4":
 		    //
 		    break;
-		case "t3_unlock":
-		    UnlockNode(["t4_unlock","t3_1","t3_2","t3_3","t3_4","t3_5","t3_6"]);
+		case "t2_unlock":
+		    UnlockNode(["t3_unlock","t3_1","t3_2","t3_3","t3_4","t3_5","t3_6"]);
 			global.i_player.inventory.flower_counts[3] = 0;
 			global.i_player.perception_level++;
 		    break;
@@ -139,8 +139,8 @@ function PerformUpgrade(upg_name){
 		case "t3_6":
 		    //
 		    break;
-		case "t4_unlock":
-		    UnlockNode(["t5_unlock","t4_1","t4_2"]);
+		case "t3_unlock":
+		    UnlockNode(["t4_unlock","t4_1","t4_2"]);
 			global.i_player.inventory.flower_counts[4] = 0;
 			global.i_player.perception_level++;
 		    break;
@@ -150,7 +150,7 @@ function PerformUpgrade(upg_name){
 		case "t4_2":
 		    //
 		    break;
-		case "t5_unlock":
+		case "t4_unlock":
 		    //
 		    break;
 	}
@@ -167,5 +167,5 @@ function UnlockNode(names=[]){
 	}
 }
 function UpgradeMenuStartNextLevel(){
-	show_debug_message("upgrade menu start next level.");
+	instance_create_depth(0,0,UPPERDEPTH,oUpgradeMenuTransition);
 }

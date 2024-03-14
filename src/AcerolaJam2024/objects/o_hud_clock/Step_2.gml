@@ -1,7 +1,9 @@
 /// @description 
 
-x = global.i_camera.x;
-y = global.i_camera.y - 0.9*global.i_camera.viewHeightHalf;
+
+bbox[0] = camera_get_view_x(view_camera[0]) + x;
+bbox[1] = camera_get_view_y(view_camera[0]) + y;
+
 
 if(ds_stack_size(global.i_engine.menu_stack) == 0)
 {

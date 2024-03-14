@@ -10,11 +10,14 @@ function SetPlayerBehavior(_bhvr){
 	}
 }
 function FinishLevel(){
-	with(oEnemy) instance_destroy();
-	with(oBush) instance_destroy();
-	time_source_started = false;
-	time_source_complete = false;
-	instance_create_depth(0,0,UPPERDEPTH,oUpgradeMenu);
+	with(oEnemy) {instance_destroy()}
+	with(oBush) {instance_destroy()}
+	with(o_hud_interactables)
+	{
+		time_source_started = false;
+		time_source_complete = false;
+	}
+	if(!instance_exists(oUpgradeMenu)) instance_create_depth(0,0,UPPERDEPTH,oUpgradeMenu);
 }
 
 
@@ -26,15 +29,16 @@ ds_stack_pop(global.i_engine.menu_stack);
 // general variables
 time_source_started = false;
 time_source_complete = false;
-finish_showpos = vect2(180,0);
-finish_hidepos = vect2(180,60);
+finish_showpos = vect2((global.i_camera.viewWidthHalf-xstart)-(sprite_get_width(s_hud_finish) div 2), -40);
+finish_hidepos = vect2(finish_showpos[1],100);
+
 
 var _ind = -1;
 // foraging button (set player behavior to foraging)
-ButtonAdd(-30-(sprite_get_width(s_hud_foraging) div 2),0,id,++_ind,"forage",s_hud_foraging,,"",,SetPlayerBehavior,[FORAGING]);
+ButtonAdd(-(sprite_get_width(s_hud_foraging) div 2),0,id,++_ind,"forage",s_hud_foraging,,"",,SetPlayerBehavior,[FORAGING]);
 // fighting button (set player behavior to fighting)
-ButtonAdd(30-(sprite_get_width(s_hud_fighting) div 2),0,id,++_ind,"forage",s_hud_fighting,,"",,SetPlayerBehavior,[AGGRESSIVE]);
+ButtonAdd(40-(sprite_get_width(s_hud_fighting) div 2),0,id,++_ind,"forage",s_hud_fighting,,"",,SetPlayerBehavior,[AGGRESSIVE]);
 // button to end a level and bring up the reserch menu
-ButtonAdd(finish_showpos[1],finish_showpos[2],id,++_ind,"finish",s_hud_finish,,"",,FinishLevel,[]);
+ButtonAdd(finish_hidepos[1],finish_hidepos[2],id,++_ind,"finish",s_hud_finish,,"",,FinishLevel,[]);
 
 SetPlayerBehavior(FORAGING);

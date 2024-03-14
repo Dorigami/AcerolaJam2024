@@ -1,5 +1,7 @@
 /// @description 
 
+if(alarm[0] > -1) exit;
+
 xTo = global.i_camera.x;
 yTo = global.i_camera.y;
 
