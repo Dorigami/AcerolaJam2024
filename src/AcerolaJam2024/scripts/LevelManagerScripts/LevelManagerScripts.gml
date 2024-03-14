@@ -78,7 +78,6 @@ function LevelComplete(){
 		time_source_stop(ts_enemy_timer);
 	}
 	with(o_hud_interactables) time_source_complete = true;
-	instance_create_depth(0,0,UPPERDEPTH,oUpgradeMenu);
 }
 
 function hex_get_enemy_spawn(_min_dist=3){

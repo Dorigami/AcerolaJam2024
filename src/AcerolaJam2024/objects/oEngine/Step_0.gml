@@ -69,7 +69,8 @@ if(!is_undefined(player_focus_command)){
 	var _tgt = player_focus_command.value;
 	if(_tgt != noone) && (_tgt.faction == FACTION_PLAYER) _tgt = noone;
 	global.i_player.ai.focus_target = _tgt; 
-	if(!instance_exists(o_player_focus)) instance_create_depth(_tgt.position[1], _tgt.position[2],UPPERDEPTH+20,o_player_focus);
+	with(o_player_focus) instance_destroy();
+	if(_tgt != noone) instance_create_depth(_tgt.position[1], _tgt.position[2],UPPERDEPTH+20,o_player_focus);
 }
 var _zoom = !is_undefined(camera_zoomout) + 2*!is_undefined(camera_zoomin);
 if(_zoom > 0)

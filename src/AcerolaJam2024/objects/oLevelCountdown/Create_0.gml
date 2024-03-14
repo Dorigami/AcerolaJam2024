@@ -32,3 +32,7 @@ UpdateFloatPos();
 time_source_start(ts_floatnumbers);
 time_source_start(ts_countdown);
 CountdownFloat();
+
+	// start music
+	var _song = choose(snd_11,snd_12,snd_13,snd_21,snd_22,snd_23,snd_31,snd_32);
+	SoundCommand(_song, 0, 0);

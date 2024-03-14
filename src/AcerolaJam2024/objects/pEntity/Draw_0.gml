@@ -13,7 +13,7 @@ if(global.mouse_focus == id)
 // draw the entity
 if(z > 0) draw_sprite_ext(sShadow,0,x,y,shadow_scale,shadow_scale,0,c_white,1);
 
-draw_sprite_ext(sprite_index,image_number,x,y-z,image_xscale,image_yscale,image_angle,image_blend,image_alpha)
+draw_sprite_ext(sprite_index,image_index,x,y-z,image_xscale,image_yscale,image_angle,image_blend,image_alpha)
 
 var _prog = 0;
 

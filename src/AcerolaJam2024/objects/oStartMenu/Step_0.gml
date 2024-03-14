@@ -16,7 +16,9 @@ if(x != xTo) || (y != yTo)
 		x += 0.08*_xdiff; y += 0.08*_ydiff;
 	}
 }
-
+// move the tutorial in and out of view
+var _pos = show_tutorial ? tut_true_pos : tut_false_pos;
+tut_pos = vect_add(tut_pos, vect_multr((vect_subtract(_pos, tut_pos)),0.1));
 // Inherit the parent event
 event_inherited();
 

@@ -99,7 +99,7 @@ function ConsumeForagingCharge(){
 	{
 		if(foraging_charges[i] <= 0){ _rand++ }
 	}
-	if(_rand == 5) KillEntity(id);
+	if(_rand == 5){} //KillEntity(id);
 }
 
 // Inherit the parent event
