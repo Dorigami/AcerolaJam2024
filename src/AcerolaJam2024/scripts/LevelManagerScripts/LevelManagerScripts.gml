@@ -9,11 +9,38 @@ function TimedEnemyPlacement(){
 	with(oEnemy){ _count++ }
 	if(_count < _en_limit)
 	{
-		var _hex = hex_get_enemy_spawn();
-		var _pos = hex_to_pixel(_hex,true);
-		with(instance_create_depth(_pos[1], _pos[2], ENTITYDEPTH, oEnemy, {type_string : "gen_enemy"})){
-			xTo = _pos[1]; yTo = _pos[2]
-			position = _pos; 
+		with(oLevelManager)
+		{
+			var _hex = hex_get_enemy_spawn();
+			var _pos = hex_to_pixel(_hex,true);
+		
+			var _types = ["sheep", "wolf", "yak", "warg", "werewolf"];
+			var _rand = random(1);
+			var _chances = [1.0,0,0,0,0];
+			// change odds based on the level index and perception level
+			level_difficulty = level_index + 2*(global.i_player.perception_level-1)
+			if(level_difficulty < 4){
+				_chances = [1.0,0.3,0,0,0];
+			} else if(level_difficulty < 4){
+				_chances = [1.0,0.45,0.2,0,0];
+			} else if(level_difficulty < 12){
+				_chances = [1.0,0.5,0.3,0.1,0];
+			} else {
+				_chances = [1.0,0.9,0.8,0.6,0.3];
+			}
+			// create the enemy
+			for(var i=array_length(_types)-1;i>=0;i--)
+			{
+				if(_rand < _chances[i])
+				{
+					with(instance_create_depth(_pos[1], _pos[2], ENTITYDEPTH, oEnemy, {type_string : _types[i]})){
+						xTo = _pos[1]; yTo = _pos[2]
+						position = _pos; 
+					}
+					break;
+				}
+			}
+			show_debug_message("difficulty = {0}",level_difficulty);
 		}
 	}
 }

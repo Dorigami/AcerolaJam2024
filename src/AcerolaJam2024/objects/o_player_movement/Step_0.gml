@@ -1,5 +1,7 @@
 /// @description 
 
+if(global.game_state == GameStates.PAUSE) exit;
+
 if(!array_equals(p.hex,hex))
 {
 	hex = p.hex;

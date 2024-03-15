@@ -56,7 +56,7 @@ Fighter = function(_hp, _strength, _defense, _speed, _range, _xp, _basic_attack=
 		attack_timer = ceil(basic_attack.duration*FRAME_RATE);
 		basic_cooldown_timer = 100;
 		basic_cooldown_rate = 100 / (basic_attack.cooldown*FRAME_RATE);
-		
+		owner.image_index = 0;
 		owner.attack_move_penalty = basic_attack.move_penalty;
 		var _struct = {
 			creator : owner.fighter,
@@ -73,7 +73,7 @@ Fighter = function(_hp, _strength, _defense, _speed, _range, _xp, _basic_attack=
 		attack_timer = ceil(active_attack.duration*FRAME_RATE);
 		active_cooldown_timer = 100;
 		active_cooldown_rate = active_attack.cooldown*FRAME_RATE*0.01;
-		
+		owner.image_index = 0;
 		owner.attack_move_penalty = active_attack.move_penalty;
 		var _struct = {
 			creator : owner.fighter,
@@ -88,7 +88,7 @@ Fighter = function(_hp, _strength, _defense, _speed, _range, _xp, _basic_attack=
 		if(!instance_exists(_other_fighter.owner)) return false;
 		if(!instance_exists(owner)) return false;
 		if(_other_fighter.hp <= 0) return false; // fighter is already dead
-		var _damClac = max(1, _damage - _other_fighter.defense);
+		var _damClac = max(1, strength - _other_fighter.defense);
 		// verify entity
 		if(!instance_exists(_other_fighter.owner)) return false; // can't attack non-existance entity
 		// run calculation

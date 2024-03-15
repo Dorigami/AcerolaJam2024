@@ -19,5 +19,3 @@ switch(trans_type)
 		with(creator){ alarm[0] = 400}
 		break;
 }
-
-show_debug_message("stack size = {0}", ds_stack_size(global.i_engine.menu_stack));

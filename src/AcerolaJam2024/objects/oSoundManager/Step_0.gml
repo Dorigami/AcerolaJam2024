@@ -74,7 +74,7 @@ if(music_fade_direction != NONE)
 		// fade out the current song
 		music_fade = max(0, audio_sound_get_gain(music_fade_prev_song) - (music_fade_rate*music_gain));
 		if(music_fade <= 0){
-			if(audio_is_playing(music_fade_prev_song)) audio_stop_sound(music_fade_prev_song);
+			if(audio_is_playing(music_fade_prev_song)) audio_group_stop_all(GameMusic);
 			if(music_fade_next_song != -1)
 			{
 				music_fade_direction = audio_exists(music_fade_next_song);

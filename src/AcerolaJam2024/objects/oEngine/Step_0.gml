@@ -93,38 +93,7 @@ if(_zoom > 0)
 	}
 }
 if(!is_undefined(escape)){
-	show_debug_message("ESCAPE ACTION")
-	switch(global.game_state)
-	{
-		default:
-			if(ds_stack_size(menu_stack) == 0)
-			{
-				if(global.game_state != GameStates.PAUSE)
-				{
-					// pause the game
-					show_debug_message("Pause Game");
-					global.game_state_previous = global.game_state;
-					global.game_state = GameStates.PAUSE;
-					with(oLevelManager)
-					{
-						LevelPause();
-					}
-				} else {
-					// unpause the game
-					show_debug_message("Pause Game");
-					global.game_state = global.game_state_previous;
-					with(oLevelManager)
-					{
-						LevelUnpause();	
-					}	
-				}
-			} else {
-				// remove menu off of the stack
-				show_debug_message("Exit Current Menu");
-				with(ds_stack_pop(menu_stack)) instance_destroy();
-			}
-			break;
-	}
+	show_debug_message("ESCAPE ACTION");
 }
 
 // game update loop

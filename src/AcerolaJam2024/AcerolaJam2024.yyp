@@ -134,6 +134,7 @@
     {"id":{"name":"RoomTransition","path":"scripts/RoomTransition/RoomTransition.yy",},},
     {"id":{"name":"ScreenShake","path":"scripts/ScreenShake/ScreenShake.yy",},},
     {"id":{"name":"script_execute_array","path":"scripts/script_execute_array/script_execute_array.yy",},},
+    {"id":{"name":"PauseScripts","path":"scripts/PauseScripts/PauseScripts.yy",},},
     {"id":{"name":"SoundCommand","path":"scripts/SoundCommand/SoundCommand.yy",},},
     {"id":{"name":"SpawnBush","path":"scripts/SpawnBush/SpawnBush.yy",},},
     {"id":{"name":"SpawnEnemy","path":"scripts/SpawnEnemy/SpawnEnemy.yy",},},

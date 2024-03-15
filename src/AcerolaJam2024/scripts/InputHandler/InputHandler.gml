@@ -138,4 +138,5 @@ function handle_pause_keys(){
     {
 		return {escape : new Command("escape",true,0,0)}
 	}
+	return {}
 }

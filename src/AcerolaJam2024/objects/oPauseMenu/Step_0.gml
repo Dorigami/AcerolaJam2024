@@ -1,48 +1,47 @@
 /// @description 
 
-if(alarm[0] > -1) exit;
-
 xTo = global.i_camera.x;
 yTo = global.i_camera.y;
 
-// pan into the center of camera
+// background fade
+if(trans_type == NONE) // quit to menu
+{
+	bg_alpha = min(1,bg_alpha+trans_rate);
+} else if(trans_type == IN){ // bring up pause menu
+	bg_alpha = min(0.4,bg_alpha+trans_rate);
+} else {
+	bg_alpha = max(0,bg_alpha-trans_rate); // resume game
+	image_alpha -= trans_rate
+	if(image_alpha <= 0) 
+	{
+		unpause_game();
+		exit;
+	}
+}
+
+// pan to target
 if(x != xTo) || (y != yTo)
 {
 	var _xdiff = xTo - x;
 	var _ydiff = yTo - y;
 	if(abs(_xdiff) <= 1) && (abs(_ydiff) <= 1){
 		x = xTo; y = yTo;
+		if(trans_type == OUT){
+			unpause_game();
+		}
 	} else {
 		x += 0.08*_xdiff; y += 0.08*_ydiff;
 	}
-	// update draw positions for flower count
-	flower_draw_positions = [
-		vect2(x+107,y+80),
-		vect2(x+132,y+80),
-		vect2(x+157,y+80),
-		vect2(x+182,y+80),
-		vect2(x+207,y+80)];
 }
 
-// check if any of the upgrade nodes is beeing held down by player
-progression_clicked_index = GetFocusStatus();
-if(progression_clicked_index > -1) && (mouse_check_button(mb_left)) && (controlsList[| progression_clicked_index].sprite == s_upgrade_node_available)
-{	// start counting down as the mouse if being held
-	if(time_source_get_state(ts_progression_buy) == time_source_state_initial) time_source_start(ts_progression_buy);
-} else {
-	// reset the time source when condition to buy is not met
-	if(time_source_get_state(ts_progression_buy) != time_source_state_initial)
-	{ 
-		time_source_reset(ts_progression_buy) ;
-		progression_buy_progress = 0;
+// update controls
+controlsCount = ds_list_size(controlsList)
+if(controlsCount > 0)
+{
+	for(var i=0; i<controlsCount; i++)
+	{
+		var _ctrl = controlsList[| i];
+		_ctrl.Update();
 	}
 }
-if(time_source_get_state(ts_progression_buy) == time_source_state_active)
-{
-	progression_buy_progress = 100*(1-time_source_get_time_remaining(ts_progression_buy)/time_source_get_period(ts_progression_buy));
-} 
-
-
-// Inherit the parent event
-event_inherited();
 
