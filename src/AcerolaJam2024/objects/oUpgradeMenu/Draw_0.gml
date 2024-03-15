@@ -40,7 +40,7 @@ for(var i=0;i<5;i++)
 	if(player_flowers[i] == -1){p_str = "-"} else {
 		p_str = string(player_flowers[i])
 		// draw flower icon only if the player has unlocked it
-		draw_sprite(s_flowericon,i,flower_draw_positions[i][1]-8,flower_draw_positions[i][2]-24);
+		draw_sprite(s_flowericon,i,flower_draw_positions[i][1],flower_draw_positions[i][2]-16);
 	}
 	if(required_flowers[i] == -1){r_str = "-"} else {r_str = string(required_flowers[i])}
 
