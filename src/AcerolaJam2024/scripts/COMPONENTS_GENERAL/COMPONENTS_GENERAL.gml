@@ -52,6 +52,7 @@ Fighter = function(_hp, _strength, _defense, _speed, _range, _xp, _basic_attack=
 	static UseBasic = function(){
 		// this function needs to return the cooldown time(measured in steps) for enemy ai to function correctly
 		// show_debug_message("UseBasic for object:{0} [1]", object_get_name(owner.object_index), owner.id);
+		if(owner.sound_attack != snd_empty) SoundCommand(owner.sound_attack,0,0);
 		attack_index = 0;
 		attack_timer = ceil(basic_attack.duration*FRAME_RATE);
 		basic_cooldown_timer = 100;
@@ -88,7 +89,7 @@ Fighter = function(_hp, _strength, _defense, _speed, _range, _xp, _basic_attack=
 		if(!instance_exists(_other_fighter.owner)) return false;
 		if(!instance_exists(owner)) return false;
 		if(_other_fighter.hp <= 0) return false; // fighter is already dead
-		var _damClac = max(1, strength - _other_fighter.defense);
+		var _damClac = max(1, _damage - _other_fighter.defense);
 		// verify entity
 		if(!instance_exists(_other_fighter.owner)) return false; // can't attack non-existance entity
 		// run calculation
@@ -157,5 +158,5 @@ Fighter = function(_hp, _strength, _defense, _speed, _range, _xp, _basic_attack=
 Inventory = function(_owner=noone) constructor{
 	owner = _owner;
 	flower_names = ["RED", "BLUE", "YELLOW", "FUSCHIA", "SPECKLED"];
-	flower_counts = [0,0,-1,-1,-1];
+	flower_counts = [10,10,10,10,10];
 }

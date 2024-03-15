@@ -22,11 +22,11 @@ function TimedEnemyPlacement(){
 			if(level_difficulty < 4){
 				_chances = [1.0,0.3,0,0,0];
 			} else if(level_difficulty < 4){
-				_chances = [1.0,0.45,0.2,0,0];
+				_chances = [1.0,0.7,0.3,0,0];
 			} else if(level_difficulty < 12){
-				_chances = [1.0,0.5,0.3,0.1,0];
+				_chances = [1.0,0.95,0.7,0.3,0];
 			} else {
-				_chances = [1.0,0.9,0.8,0.6,0.3];
+				_chances = [1.0,0.99,0.85,0.7,0.4];
 			}
 			// create the enemy
 			for(var i=array_length(_types)-1;i>=0;i--)
@@ -103,8 +103,10 @@ function LevelComplete(){
 		
 		time_source_stop(ts_bush_timer);
 		time_source_stop(ts_enemy_timer);
+
 	}
 	with(o_hud_interactables) time_source_complete = true;
+	with(global.i_player.fighter) hp = hp_max;
 }
 
 function hex_get_enemy_spawn(_min_dist=3){

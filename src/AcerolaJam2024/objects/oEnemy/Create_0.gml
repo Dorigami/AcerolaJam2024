@@ -18,9 +18,9 @@ spr_death = asset_get_index("s_"+type_string+"_death");
 //sound
 sound_spawn = asset_get_index("snd_"+type_string+"_spawn") == -1 ? snd_empty: asset_get_index("snd_"+type_string+"_spawn");
 sound_move = asset_get_index("snd_"+type_string+"_move") == -1 ? snd_empty: asset_get_index("snd_"+type_string+"_move");
-sound_attack = asset_get_index("snd_"+type_string+"_attack") == -1 ? snd_empty: asset_get_index("snd_"+type_string+"_attack");
-sound_death = asset_get_index("snd_"+type_string+"_death") == -1 ? snd_empty: asset_get_index("snd_"+type_string+"_death");
-
+sound_attack = asset_get_index("snd_"+type_string+"_attack") == -1 ? snd_enemy_attack: asset_get_index("snd_"+type_string+"_attack");
+sound_death = asset_get_index("snd_"+type_string+"_death") == -1 ? snd_enemy_death: asset_get_index("snd_"+type_string+"_death");
+show_debug_message("sounde is = {0}", audio_get_name(sound_attack));
 switch(type_string)
 {
 	case "sheep":

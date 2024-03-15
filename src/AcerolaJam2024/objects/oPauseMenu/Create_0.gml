@@ -15,6 +15,7 @@ function Resume(){
 	}
 }
 function ToMenu(){
+	with(o_hud_interactables) time_source_started = false;
 	with(oPauseMenu)
 	{
 		controlsList[| 0].enabled = false;
@@ -53,11 +54,11 @@ bg_alpha = 0;
 // Title
 pause_text = "------ PAUSE ------";
 var _ind = -1;
-var _w = sprite_get_width(s_pause_quit);
+var _w = sprite_get_width(s_pause_tomenu);
 // resume button
 ButtonAdd(-40-(_w div 2),12,id,++_ind,"resume",s_pause_resume,undefined,"",undefined,Resume,[]);
 // quit Button
-ButtonAdd(40-(_w div 2),12,id,++_ind,"quit",s_pause_quit,undefined,"",undefined,ToMenu,[]);
+ButtonAdd(40-(_w div 2),12,id,++_ind,"quit",s_pause_tomenu,undefined,"",undefined,ToMenu,[]);
 
 
 

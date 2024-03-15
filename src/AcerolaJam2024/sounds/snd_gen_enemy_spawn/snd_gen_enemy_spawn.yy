@@ -2,8 +2,8 @@
   "$GMSound":"",
   "%Name":"snd_gen_enemy_spawn",
   "audioGroupId":{
-    "name":"audiogroup_default",
-    "path":"audiogroups/audiogroup_default",
+    "name":"SoundEffects",
+    "path":"audiogroups/SoundEffects",
   },
   "bitDepth":1,
   "bitRate":128,

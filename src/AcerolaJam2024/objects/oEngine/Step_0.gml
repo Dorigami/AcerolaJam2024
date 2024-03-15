@@ -95,20 +95,27 @@ if(_zoom > 0)
 if(!is_undefined(escape)){
 	show_debug_message("ESCAPE ACTION");
 }
+if(keyboard_check_pressed(ord("I"))) instance_create_depth(0,0,UPPERDEPTH,oDefeatMenu);
 
 // game update loop
 if(global.game_state != GameStates.PAUSE)
 {
 	with(pEntity)
 	{ // detemine whether the entity should be drawn or not
-		EntityVisibility();
-		
-		// update fighters (this mainly handles attack cooldowns)
-		if(!is_undefined(fighter)) && (global.game_state != GameStates.VICTORY) fighter.Update();
+		if(object_index == oPlayer) && (global.player_dead)
+		{
+			visible = false;
+		}else{
+			EntityVisibility();
+		}
+		if(global.game_state = GameStates.PLAY)
+		{
+			// update fighters (this mainly handles attack cooldowns)
+			if(!is_undefined(fighter)) fighter.Update();
 
-		// perform ai actions
-		if(!is_undefined(ai)) ai.Update();
-		
+			// perform ai actions
+			if(!is_undefined(ai)) ai.Update();
+		}
 		// do the general update
 		Update();
 	}

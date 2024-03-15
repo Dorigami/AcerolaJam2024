@@ -45,9 +45,9 @@ function room_start_init_player_entity(){
 		// update with respect to the hex grid
 		ds_list_clear(hex_path_list);
 		hex = pixel_to_hex(position);
-		hex_prev = hex;
+		if(!variable_instance_exists(id, "hex_prev")) hex_prev = hex;
+		InstantiatePlayerComponents(10,1,0,1,1,0);
 	}
-	instance_create_depth()
 }
 function room_start_init_camera(){
 	// NOTE: the playspace must initialize prior to updating the camera

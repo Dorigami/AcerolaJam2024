@@ -16,6 +16,6 @@ image_alpha = 0;
 hex = p.hex;
 mouse_dir_index = 0;
 position = vect2(x,y);
-neighbor_hex_positions = [0,0,0,0,0,0];
+neighbor_hex_positions = [vect2(0,0),vect2(0,0),vect2(0,0),vect2(0,0),vect2(0,0),vect2(0,0)];
 neighbor_hex_valid = [0,0,0,0,0,0];
-//UpdateNeighborPositions();
+UpdateNeighborPositions();

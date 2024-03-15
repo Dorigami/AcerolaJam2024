@@ -1,16 +1,16 @@
 {
   "$GMSound":"",
-  "%Name":"snd_gen_enemy_death",
+  "%Name":"snd_enemy_attack",
   "audioGroupId":{
-    "name":"audiogroup_default",
-    "path":"audiogroups/audiogroup_default",
+    "name":"SoundEffects",
+    "path":"audiogroups/SoundEffects",
   },
   "bitDepth":1,
   "bitRate":128,
   "compression":0,
   "conversionMode":0,
-  "duration":0.810975,
-  "name":"snd_gen_enemy_death",
+  "duration":1.333333,
+  "name":"snd_enemy_attack",
   "parent":{
     "name":"Generic Enemy",
     "path":"folders/Sounds/Entities/Generic Enemy.yy",
@@ -19,7 +19,7 @@
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":44100,
-  "soundFile":"snd_gen_enemy_death.wav",
+  "soundFile":"snd_enemy_attack.wav",
   "type":0,
-  "volume":0.34,
+  "volume":0.98,
 }

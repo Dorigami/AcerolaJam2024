@@ -16,7 +16,7 @@ if(--damage_point_timer == 0) && (instance_exists(target))
 {
 	if(sound_damage_point != snd_empty) SoundCommand(sound_damage_point,x,y);
     // show_debug_message("damage point - " + object_get_name(object_index));
-	creator.DealDamage(attackData.damage_value, target.fighter);
+	creator.DealDamage(attackData.damage_value*creator.strength, target.fighter);
 }
 
 

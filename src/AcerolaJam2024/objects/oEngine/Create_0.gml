@@ -44,6 +44,7 @@ global.mouse_focus = noone;
 global.playpace = [0,0,0,0];
 global.bg_fade = 0.0;
 global.seed = irandom(1000000);
+global.player_dead = false;
 
 action = {};
 mouse_action = {};

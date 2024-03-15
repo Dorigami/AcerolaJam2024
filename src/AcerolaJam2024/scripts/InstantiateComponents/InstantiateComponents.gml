@@ -18,6 +18,11 @@ function InstantiatePlayerComponents(_health,_strength,_defense,_speed,_range,_x
 		damage_value : 1,
 		damage_obj : o_player_active 
 	}
+	// clear components in they were set previously
+	if(variable_instance_exists(id, "fighter")) delete fighter;
+	if(variable_instance_exists(id, "ai")) delete ai;
+	if(variable_instance_exists(id, "inventory")) delete inventory;
+	// set components
 	fighter = new global.i_engine.Fighter(_health,_strength,_defense,_speed,_range,_xp,_basic,_active,id);
 	ai = new global.i_engine.PlayerAI(DEFENSIVE, id);
 	inventory = new global.i_engine.Inventory(id);
@@ -46,7 +51,7 @@ function InstantiatePlayerComponents(_health,_strength,_defense,_speed,_range,_x
 		t4_unlock : [false, [3,3,3,3,3],"THE ELIXER","This is the conclusion of the research.  With this, eternal life is mine to take!\n [This is the win condition]"],
 	}
 	//create the movement indicator
-	instance_create_depth(x,y,ENTITYDEPTH,o_player_movement,{p : id});
+	if(!instance_exists(o_player_movement)) instance_create_depth(x,y,ENTITYDEPTH,o_player_movement,{p : id});
 }
 function InstantiateBushComponents(_health,_strength,_defense,_speed,_range,_xp){
 	// determine the attacks
@@ -80,19 +85,19 @@ function InstantiateEnemyComponents(_health,_strength,_defense,_speed,_range,_xp
 		name : "Thrust Spear",
 		cooldown : 2.5,       // delay, in seconds, between attacks
 		move_penalty : 0.8, // move speed reduced during attack
-		duration : 0.6,     // movement is reduced, other attacks cannot be done during this time
+		duration : 0.5,     // movement is reduced, other attacks cannot be done during this time
 		damage_point : 10,  // damage is dealt after this step count
 		damage_value : 1,
-		damage_obj : o_player_basic 
+		damage_obj : o_enemy_basic 
 	}
 	var _active = {
 		name : "Throw Spear",
 		cooldown : 5, // delay, in seconds, between attacks
 		move_penalty : 0.8, // move speed reduced during attack
-		duration : 0.6, // movement is reduced, other attacks cannot be done during this time
+		duration : 0.5, // movement is reduced, other attacks cannot be done during this time
 		damage_point : 10, // damage is dealt after this step count
 		damage_value : 1,
-		damage_obj : o_player_active 
+		damage_obj : o_enemy_active 
 	}
 
 	fighter = new global.i_engine.Fighter(_health,_strength,_defense,_speed,_range,_xp,_basic,_active,id);

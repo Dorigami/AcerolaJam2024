@@ -13,6 +13,9 @@ function KillEntity(_ent){
 			instance_destroy();
 		} else {
 			// set 'Defeat' state
+			global.game_state_previous = global.game_state;
+			global.game_state = GameStates.DEFEAT;
+			global.player_dead = true;
 		}
 	}
 }

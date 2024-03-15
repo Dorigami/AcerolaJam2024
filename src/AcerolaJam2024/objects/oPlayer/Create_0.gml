@@ -16,4 +16,3 @@ sound_move = snd_player_move;
 sound_attack = snd_empty;
 sound_death = snd_player_death;
 
-InstantiatePlayerComponents(10,1,1,1,1,0);

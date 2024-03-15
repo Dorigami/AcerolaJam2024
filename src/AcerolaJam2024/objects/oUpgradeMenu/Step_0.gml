@@ -1,5 +1,9 @@
 /// @description 
-
+if(global.game_state == GameStates.VICTORY)
+{
+	if(image_alpha != 0) image_alpha = max(0,image_alpha-0.05);
+	exit;
+}
 if(alarm[0] > -1) exit;
 
 xTo = global.i_camera.x;

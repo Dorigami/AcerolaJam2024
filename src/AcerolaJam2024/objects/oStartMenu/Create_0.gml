@@ -1,7 +1,7 @@
 /// @description 
 StartMenuFunctions();
 
-alarm[0] = FRAME_RATE;
+alarm[0] = 0.5*FRAME_RATE;
 
 // Inherit the parent event
 event_inherited();
@@ -26,7 +26,7 @@ tut += "     --------- SCENARIO ---------\n  The goal of this game is too collec
 tut += "  Targeting a creature will force the player to chase/attack that target, while targeting a bush will force the player to move to it and collect flowers.  There will be buttons at the bottom of the screen to switch the player between \'peaceful\' & \'aggressive\' behaviors.  Play around with them to see what they do!"
 // set scaling
 menu_9s = s_upgrade_menu_9s;
-menu_size = vect2(160,200);
+menu_size = vect2(160,220);
 menu_half_w = menu_size[1] div 2;
 menu_half_h = menu_size[2] div 2;
 menu_xscale = menu_size[1] / sprite_get_width(s_upgrade_menu_9s);
@@ -38,8 +38,8 @@ LabelAdd(-58,-70,id,++_ind,"title",undefined,_title);
 // Start Game Button
 ButtonAdd(-sprite_get_width(s_startmenu_start) div 2, -14, id, ++_ind, "start", s_startmenu_start,,"",,Start,[]);
 // Controls/Tutorial Button
-ButtonAdd(-sprite_get_width(s_startmenu_tutorial) div 2, 20, id, ++_ind, "start", s_startmenu_tutorial,,"",,Tutorial,[]);
+ButtonAdd(-sprite_get_width(s_startmenu_tutorial) div 2, 24, id, ++_ind, "start", s_startmenu_tutorial,,"",,Tutorial,[]);
 // Quit Game Button
-ButtonAdd(-sprite_get_width(s_startmenu_quit) div 2, 54, id, ++_ind, "start", s_startmenu_quit,,"",,Quit,[]);
+ButtonAdd(-sprite_get_width(s_startmenu_quit) div 2, 62, id, ++_ind, "start", s_startmenu_quit,,"",,Quit,[]);
 
 SoundCommand(snd_title_music,0,0);

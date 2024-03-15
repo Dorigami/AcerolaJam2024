@@ -14,7 +14,7 @@ var _active = false;
 var _fade_rate = 0.05;
 with(o_hud_interactables)
 {
-	if(time_source_started) && (!time_source_complete){ _active = true }
+	if(time_source_started){ _active = true }
 }
 // fade in and out based on active status
 if(_active)
