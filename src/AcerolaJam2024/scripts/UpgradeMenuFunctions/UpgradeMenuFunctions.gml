@@ -36,11 +36,9 @@ function GetFocusStatus(){
 }
 
 function CheckAffordability(){
-	player_flowers = global.i_player.inventory.flower_counts;
 	for(var i=progression_index_start;i<=progression_index_end;i++)
 	{
 		var btn = controlsList[| i];
-		show_debug_message("the data is: {0}",global.i_player.progression[$ btn.name]);
 		var acquired = global.i_player.progression[$ btn.name][0];
 		var cost = global.i_player.progression[$ btn.name][1];
 		var affordable = true;
@@ -52,7 +50,10 @@ function CheckAffordability(){
 			// check to see if player can afford then set sprite accordingly
 			for(var j=0;j<array_length(cost);j++)
 			{
-				if(player_flowers[j] < cost[j]){ affordable = false; break }
+				if(global.i_player.inventory.flower_counts[j] < cost[j]){ 
+					affordable = false; 
+					break; 
+				}
 			}
 			// set the sprite
 			btn.sprite = affordable ? s_upgrade_node_available : s_upgrade_node_expensive;
@@ -94,10 +95,12 @@ function PerformUpgrade(upg_name){
 		    UnlockNode(["t1_unlock","t1_1","t1_2"]);
 		    break;
 		case "t1_1":
-		    //
+			// Athletics
+		    global.i_player.fighter.speed++;
 		    break;
 		case "t1_2":
-		    //
+			// Green Thumb I
+		    global.i_player.fighter.foraging++;
 		    break;
 		case "t1_unlock":
 		    UnlockNode(["t2_unlock","t2_1","t2_2","t2_3","t2_4"]);
@@ -105,16 +108,20 @@ function PerformUpgrade(upg_name){
 			global.i_player.perception_level++;
 		    break;
 		case "t2_1":
-		    //
+			// Wand Training
+		    global.i_player.fighter.range++;
 		    break;
 		case "t2_2":
-		    //
+			// Constitution I
+		    global.i_player.fighter.hp += 10;
+			global.i_player.fighter.hp_max += 10;
 		    break;
 		case "t2_3":
-		    //
+			// Green Thumb II
+		    global.i_player.fighter.foraging++;
 		    break;
 		case "t2_4":
-		    //
+		    // 'Therepy' is implemented elsewhere
 		    break;
 		case "t2_unlock":
 		    UnlockNode(["t3_unlock","t3_1","t3_2","t3_3","t3_4","t3_5","t3_6"]);
@@ -122,22 +129,29 @@ function PerformUpgrade(upg_name){
 			global.i_player.perception_level++;
 		    break;
 		case "t3_1":
-		    //
+		    //Slowing Strikes
+			// implemented elsewhere
 		    break;
 		case "t3_2":
-		    //
+		    //Focused Strikes
+			global.i_player.fighter.strength++;
 		    break;
 		case "t3_3":
-		    //
+		    //Vampirism I
+			// implemented elsewhere
 		    break;
 		case "t3_4":
-		    //
+		    //Stealth Training
+			// implemented elsewhere
 		    break;
 		case "t3_5":
-		    //
+		    //Constitution II
+		    global.i_player.fighter.hp += 10;
+			global.i_player.fighter.hp_max += 10;
 		    break;
 		case "t3_6":
-		    //
+		    //Fertilizer
+			// implemented elsewhere
 		    break;
 		case "t3_unlock":
 		    UnlockNode(["t4_unlock","t4_1","t4_2"]);
@@ -145,10 +159,12 @@ function PerformUpgrade(upg_name){
 			global.i_player.perception_level++;
 		    break;
 		case "t4_1":
-		    //
+		    //Vampirism II
+			// implemented elsewhere
 		    break;
 		case "t4_2":
-		    //
+		    //Cultivation
+			// implemented elsewhere
 		    break;
 		case "t4_unlock":
 		    global.game_state = GameStates.VICTORY;

@@ -10,8 +10,9 @@ function SetPlayerBehavior(_bhvr){
 	}
 }
 function FinishLevel(){
-	with(oEnemy) {instance_destroy()}
-	with(oBush) {instance_destroy()}
+	with(oEnemy) { instance_destroy() }
+	with(oBush) { instance_destroy() }
+	with(global.i_player.fighter) hp = hp_max;
 	with(o_hud_interactables)
 	{
 		time_source_started = false;

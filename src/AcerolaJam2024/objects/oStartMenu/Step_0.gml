@@ -19,6 +19,11 @@ if(x != xTo) || (y != yTo)
 // move the tutorial in and out of view
 var _pos = show_tutorial ? tut_true_pos : tut_false_pos;
 tut_pos = vect_add(tut_pos, vect_multr((vect_subtract(_pos, tut_pos)),0.1));
+
+// move the credits in and out of view
+_pos = show_credits ? cdt_true_pos : cdt_false_pos;
+cdt_pos = vect_add(cdt_pos, vect_multr((vect_subtract(_pos, cdt_pos)),0.1));
+
 // Inherit the parent event
 event_inherited();
 

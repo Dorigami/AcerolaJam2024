@@ -157,6 +157,6 @@ Fighter = function(_hp, _strength, _defense, _speed, _range, _xp, _basic_attack=
 }
 Inventory = function(_owner=noone) constructor{
 	owner = _owner;
-	flower_names = ["RED", "BLUE", "YELLOW", "FUSCHIA", "SPECKLED"];
-	flower_counts = [10,10,10,10,10];
+	flower_names = ["red", "blue", "yellow", "fuschia", "speckled"];
+	flower_counts = [0,0,-1,-1,-1];
 }

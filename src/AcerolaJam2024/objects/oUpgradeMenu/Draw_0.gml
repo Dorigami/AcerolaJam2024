@@ -36,9 +36,9 @@ var r_str = "";
 for(var i=0;i<5;i++)
 {
 	// draw player's flower count in red if it is not enough for the upgrade
-	if(required_flowers[i] > player_flowers[i]) draw_set_color(c_red);
-	if(player_flowers[i] == -1){p_str = "-"} else {
-		p_str = string(player_flowers[i])
+	if(required_flowers[i] > global.i_player.inventory.flower_counts[i]) draw_set_color(c_red);
+	if(global.i_player.inventory.flower_counts[i] == -1){p_str = "-"} else {
+		p_str = string(global.i_player.inventory.flower_counts[i])
 		// draw flower icon only if the player has unlocked it
 		draw_sprite(s_flowericon,i,flower_draw_positions[i][1],flower_draw_positions[i][2]-16);
 	}

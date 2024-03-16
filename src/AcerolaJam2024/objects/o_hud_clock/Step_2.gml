@@ -15,5 +15,5 @@ if(ds_stack_size(global.i_engine.menu_stack) == 0)
 with(oLevelManager)
 {
 	// get the time string from the level manager
-	other.time_string = timer_minutes_string + ":" + timer_seconds_string; // + "." + timer_milliseconds_string;
+	other.time_string = "TIME LEFT: " + timer_minutes_string + ":" + timer_seconds_string; // + "." + timer_milliseconds_string;
 }

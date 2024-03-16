@@ -12,4 +12,10 @@ if(player_in_range) && (global.i_player.fighter.attack_index == -1)
 	}
 }
 
-if(foraging_progress == foraging_threshold) ConsumeForagingCharge();
+if(foraging_progress == foraging_threshold) 
+{
+	// heal the player if they have the upgrade
+	if(global.i_player.progression[$ "t2_4"][0]) { global.i_player.fighter.hp = min(global.i_player.fighter.hp+1, global.i_player.fighter.hp_max) }
+	// consume a flower
+	ConsumeForagingCharge();
+}

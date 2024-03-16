@@ -1,4 +1,5 @@
 /// @description 
+
 draw_set_alpha(image_alpha)
 for(var i=0;i<6;i++)
 {

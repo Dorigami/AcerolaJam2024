@@ -4,12 +4,12 @@ function TimedBushPlacement(){
 
 function TimedEnemyPlacement(){
 	show_debug_message("timed enemy placement");
-	var _en_limit = 6;
-	var _count = 0;
-	with(oEnemy){ _count++ }
-	if(_count < _en_limit)
+	with(oLevelManager)
 	{
-		with(oLevelManager)
+		var _en_limit = 6 + (2*(level_difficulty div 4));
+		var _count = 0;
+		with(oEnemy){ _count++ }
+		if(_count < _en_limit)
 		{
 			var _hex = hex_get_enemy_spawn();
 			var _pos = hex_to_pixel(_hex,true);
@@ -22,7 +22,7 @@ function TimedEnemyPlacement(){
 			if(level_difficulty < 4){
 				_chances = [1.0,0.3,0,0,0];
 			} else if(level_difficulty < 4){
-				_chances = [1.0,0.7,0.3,0,0];
+				_chances = [1.0,0.8,0.3,0,0];
 			} else if(level_difficulty < 12){
 				_chances = [1.0,0.95,0.7,0.3,0];
 			} else {
@@ -60,9 +60,9 @@ function LevelBegin(_level_time=120, _bush_interval=20, _enemy_interval=15){
 			level_running = true;
 		
 			// place bushes and inital enemies
-			SpawnBush(0.1);
+			SpawnBush(0.04, 10 + 4*global.i_player.progression[$ "t3_6"][0]);
 		
-			time_source_start(ts_level_timer)
+			time_source_start(ts_level_timer);
 			time_source_start(ts_bush_timer);
 			time_source_start(ts_enemy_timer);
 			
@@ -106,7 +106,6 @@ function LevelComplete(){
 
 	}
 	with(o_hud_interactables) time_source_complete = true;
-	with(global.i_player.fighter) hp = hp_max;
 }
 
 function hex_get_enemy_spawn(_min_dist=3){

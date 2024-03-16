@@ -76,7 +76,6 @@ progression_buy_progress = 0;
 progression_focus_name = "";
 progression_focus_title = "";
 progression_focus_text = "This is sample text for the progression/upgrade eplanation window.  Please use this to format the textbox to make is as pretty as can be!!!"
-player_flowers = global.i_player.inventory.flower_counts;
 required_flowers = [-1,-1,-1,-1,-1];
 flower_draw_positions = [vect2(0,0),vect2(0,0),vect2(0,0),vect2(0,0),vect2(0,0)];
 FocusProgressionNode();

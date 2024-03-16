@@ -118,13 +118,17 @@ EnemyAI = function(_behavior, _owner) constructor{
 	behavior = _behavior;
 	owner = _owner;
 	aggro_flag = false;
-	aggro_radius = 2;
+	aggro_radius = 2 - global.i_player.progression[$ "t3_4"][0];
 	aggro_chase_dist = 2;
 	action_time = FRAME_RATE*2;
 	action_timer = 1;
 	static Update = function(){
 		var _target = GetAutoAttackTarget();
-		if(_target != noone) && (!aggro_flag){aggro_flag = true; instance_create_depth(owner.x,owner.y,UPPERDEPTH+10,oAggroIndicator,{creator : owner}) }
+		if((_target != noone) || focus_target != noone) && (!aggro_flag)
+		{
+			aggro_flag = true; 
+			//instance_create_depth(owner.x,owner.y,UPPERDEPTH+10,oAggroIndicator,{creator : owner}); 
+		}
 		if(--action_timer <= 0)
 		{
 			// decide whether to keep chasing or to start chasing

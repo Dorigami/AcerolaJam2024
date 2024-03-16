@@ -79,5 +79,5 @@ function room_start_init_hud(){
 	instance_create_depth(0.165*_wHalf,1.9*_hHalf, UPPERDEPTH+10,o_hud_player_staminabar);
 	instance_create_depth(0.16*_wHalf,1.6*_hHalf, UPPERDEPTH+10,o_hud_player_inventory);
 	instance_create_depth(0.4*_wHalf,1.8*_hHalf, UPPERDEPTH+10,o_hud_interactables);
-	instance_create_depth(_wHalf,0.1*_hHalf,UPPERDEPTH+10,o_hud_clock);
+	instance_create_depth(0.375*_wHalf,1.4*_hHalf,UPPERDEPTH+10,o_hud_clock);
 }

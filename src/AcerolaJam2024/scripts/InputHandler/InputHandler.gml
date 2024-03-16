@@ -44,23 +44,6 @@ function handle_default_mouse(){
 		}
 	} else if(mouse_check_button_pressed(mb_right)){}
 
-	// middle mouse / wheel
-	if(mouse_check_button_pressed(mb_middle)){
-        return {}
-    } else if(mouse_wheel_up()){
-        if(ds_stack_size(menu_stack) > 1)
-        {
-            return {}
-        } else {
-            return { camera_zoomin : new Command("camera_zoomin",true,0,0) }
-        }
-    } else if(mouse_wheel_down()){
-        if(ds_stack_size(menu_stack) > 1){
-            return {}
-        } else {
-            return { camera_zoomout : new Command("camera_zoomout",true,0,0) }
-        }
-    } 
     return {}
 }
 function handle_menu_mouse(){

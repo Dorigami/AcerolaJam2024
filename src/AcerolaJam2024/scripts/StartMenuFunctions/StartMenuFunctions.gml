@@ -3,10 +3,11 @@ function Start(){
 }
 function Tutorial(){
 	with(oStartMenu)
-	{
-		show_tutorial = !show_tutorial
-		show_debug_message("show tutorial = {0} | pos = {1}",show_tutorial, tut_pos);
-	}
+		{ show_tutorial = !show_tutorial }
+}
+function Credits(){
+	with(oStartMenu)
+		{ show_credits = !show_credits}
 }
 function Quit(){
 	game_end();
