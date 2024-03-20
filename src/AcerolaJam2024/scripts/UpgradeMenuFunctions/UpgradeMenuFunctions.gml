@@ -41,24 +41,21 @@ function CheckAffordability(){
 		var btn = controlsList[| i];
 		var acquired = global.i_player.progression[$ btn.name][0];
 		var cost = global.i_player.progression[$ btn.name][1];
-		var affordable = true;
 		// skip if the node is locked
 		if(btn.sprite == s_upgrade_node_locked) continue;
 		// set sprite to expensive if the player doesn't have enough flowers
 		if(!acquired)
 		{
+			btn.sprite = s_upgrade_node_available;
 			// check to see if player can afford then set sprite accordingly
 			for(var j=0;j<array_length(cost);j++)
 			{
 				if(global.i_player.inventory.flower_counts[j] < cost[j]){ 
-					affordable = false; 
+					btn.sprite = s_upgrade_node_expensive;
 					break; 
 				}
 			}
-			// set the sprite
-			btn.sprite = affordable ? s_upgrade_node_available : s_upgrade_node_expensive;
 		}
-		
 	}
 }
 

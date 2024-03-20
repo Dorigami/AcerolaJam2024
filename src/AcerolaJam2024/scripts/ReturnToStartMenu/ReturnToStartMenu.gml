@@ -8,5 +8,9 @@ function ReturnToStartMenu(){
 	global.game_state = GameStates.PLAY;
 	global.player_dead = false;
 	with(oLevelManager) LevelManagerInit();
+	with(global.i_engine)
+	{
+		while(ds_stack_size(menu_stack) > 0) instance_destroy(ds_stack_pop(menu_stack));
+	}
 	instance_create_depth(0,0,UPPERDEPTH,oStartMenu);
 }

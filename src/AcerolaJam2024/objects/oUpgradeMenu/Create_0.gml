@@ -80,6 +80,6 @@ required_flowers = [-1,-1,-1,-1,-1];
 flower_draw_positions = [vect2(0,0),vect2(0,0),vect2(0,0),vect2(0,0),vect2(0,0)];
 FocusProgressionNode();
 GetUpgrade();
-
+CheckAffordability();
 // start music
 SoundCommand(snd_upgrade_music, 0, 0);

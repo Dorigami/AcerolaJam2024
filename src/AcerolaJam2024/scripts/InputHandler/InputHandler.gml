@@ -86,7 +86,8 @@ function handle_play_keys(){
     // pause
     if(keyboard_check_pressed(vk_escape))
     {
-		return {escape : new Command("escape",true,0,0)}
+		return {  }
+		return { escape : new Command("escape",true,0,0) }
 	}
     // camera pan
     var _move = [keyboard_check(ord("D")) - keyboard_check(ord("A")), keyboard_check(ord("S")) - keyboard_check(ord("W"))];
@@ -94,9 +95,9 @@ function handle_play_keys(){
     if(_move[0] != 0) || (_move[1] != 0) 
     {
         if(_fast_pan){
-            return {camera_fast_pan : new Command("camera_fast_pan",_move,0,0)};
+            return { camera_fast_pan : new Command("camera_fast_pan",_move,0,0) };
         } else {
-            return {camera_pan : new Command("camera_pan",_move,0,0)};
+            return { camera_pan : new Command("camera_pan",_move,0,0) };
         }
     }
     return {}
@@ -119,6 +120,7 @@ function handle_pause_keys(){
     // unpause
     if(keyboard_check_pressed(vk_escape))
     {
+		return { }
 		return {escape : new Command("escape",true,0,0)}
 	}
 	return {}

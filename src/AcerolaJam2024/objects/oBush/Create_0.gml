@@ -20,8 +20,8 @@ var _dif = oLevelManager.level_difficulty;
 // get base quantities for eeach flower
 var _flower1 = irandom(2 + (_dif div 3));
 var _flower2 = irandom(2 + (_dif div 3));
-var _flower3 = irandom(1)*(_lvl > 1);
-var _flower4 = irandom(1)*(_lvl > 2);
+var _flower3 = irandom(1 + (_dif div 4))*(_lvl > 1);
+var _flower4 = irandom(1 + (_dif div 4))*(_lvl > 2);
 var _flower5 = irandom(0 + (_dif div 5))*(_lvl > 3);
 
 // get random quantities, refer to perception level on whether to give higher tier flowers
@@ -30,7 +30,7 @@ foraging_charges = [_flower1,_flower2,_flower3,_flower4,_flower5];
 var _count = 0;
 for(var i=4;i>=0;i--){ if(foraging_charges[i] == 0) _count++ }
 if(_count == 5) 
-{	foraging_charges[0] = max(1, irandom(3)); foraging_charges[1] = max(1, irandom(3))}
+{	foraging_charges[0] = max(1, irandom(3)); foraging_charges[1] = max(1, irandom(3)) }
 
 // modify quantities ('Cultivation' Upgrade)
 if(global.i_player.progression[$ "t4_2"][0])
